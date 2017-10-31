@@ -1,9 +1,9 @@
 from django.db import models
-from parler.models import TranslatableModel
 
 
-class SeoTag(TranslatableModel):
-    meta_description = models.CharField(max_length=200)
+class SeoTag(models.Model):
+    title = models.CharField(max_length=200, blank=True)
+    meta_description = models.CharField(max_length=200, blank=True)
 
     class Meta:
         abstract = True

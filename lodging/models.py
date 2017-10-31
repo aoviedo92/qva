@@ -1,5 +1,4 @@
 from django.db import models
-from parler.models import TranslatedFields
 
 from seo.models import SeoTag
 
@@ -10,9 +9,7 @@ class Amenitie(models.Model):
 
 class Lodging(SeoTag):
     """ modelo abstracto que se refiere a un hospedaje en general. """
-    translations = TranslatedFields(
-        name=models.CharField(max_length=100)
-    )
+    name = models.CharField(max_length=100, unique=True)
 
     class Meta:
         abstract = True
@@ -20,6 +17,7 @@ class Lodging(SeoTag):
 
 class Hotel(Lodging):
     """ hospedaje en hoteles """
+    description = models.CharField(max_length=255)
 
 
 class Home(Lodging):
