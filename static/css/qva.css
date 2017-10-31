@@ -1,0 +1,484 @@
+textarea:focus,
+input:focus,
+select:focus {
+    outline: none;
+}
+
+.qva-top-nav-elem {
+    /*    border: 1px solid blue;*/
+}
+
+.qva-top-nav {
+    border: 1px solid rgba(0, 0, 0, 0);
+    /*    background: rgba(76, 83, 110, 0.26);*/
+/*    background: #f5f4f4;*/
+    background-color: #5D637B;
+    /*    margin: 0;*/
+}
+.qva-top-nav-content a.login{
+    cursor: pointer;
+    color: #ccc;
+}
+
+ul.top-menu li {
+    display: inline;
+    margin-right: 25px;
+}
+
+ul.top-menu li.top-menu-lang {
+    float: left;
+}
+
+ul.top-menu li.top-menu-search {
+    float: left;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+ul.top-menu li.top-menu-login {
+    float: right;
+
+}
+
+.qva-top-menu-input {
+    padding: 5px;
+    background: rgba(76, 83, 110, 0);
+    border: 0;
+    color: #333;
+}
+
+
+.qva-top-menu-input-search::placeholder {
+    /*    color: rgba(76, 83, 110, 0.9);*/
+    color: #ccc;
+}
+
+.qva-top-menu-input-search:hover::placeholder {
+    color: #999;
+    transition: all .5s ease;
+}
+
+.qva-top-menu-input-search {
+    margin-top: -10px;
+    width: 300px;
+    padding-left: 30px;
+    transition: all .5s ease-out;
+}
+
+.qva-top-menu-input-search:hover {
+    background: rgba(76, 83, 110, 0.9);
+    border: 0;
+    color: #ccc;
+    transition: all .5s ease-in;
+    border-radius: 25px;
+    outline: none;
+}
+
+.lupa-icon {
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    float: left;
+    margin-left: 5px;
+    color: #ccc;
+}
+
+select.qva-top-menu-select-lang {
+    color: #ccc;
+    margin-top: -10px;
+    z-index: 10;
+/*    appearance: none;*/
+/*    -webkit-appearance: none;*/
+/*    -moz-appearance: none;*/
+    cursor: pointer;
+}
+
+select.qva-top-menu-select-lang option {
+    padding: 15px;
+    background: #f5f4f4;
+    cursor: pointer;
+    color: #333;
+    padding: 15px;
+}
+
+.input-datepicker {}
+
+.main-book-form input {
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    font-size: 20px;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    background-color: rgba( 245, 244, 244, 0.845)
+}
+
+div.main-book-form {
+    background: rgba(231, 199, 159, 0.5);
+    padding: 15px;
+}
+
+div.main-book-form div.book-btn div.download {
+    margin: 0 auto;
+}
+
+div.main-book-form div.book-search {
+    position: relative;
+}
+
+div.main-book-form div.book-search input {
+    padding-left: 35px;
+}
+
+.book-lupa-icon {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    font-size: 22px;
+    color: #555;
+}
+
+h3.know-cuba {
+    margin-top: -90px;
+}
+
+.hotel-1 {
+    margin: 0 auto;
+}
+
+.hotel-wrapper {
+    margin-bottom: 10px;
+}
+
+.hotel-wrapper img {
+    width: 100%;
+    height: 200px;
+}
+
+.home-wrapper img {
+    height: 250px;
+}
+
+
+div.hotel-wrapper div.info div.stars {
+    float: right;
+}
+
+div.hotel-wrapper div.info div.title {
+    float: left;
+}
+
+div.hotel-wrapper div.info span.price {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+div.hotel-wrapper img {
+    transition: all .5s ease-out;
+
+}
+
+div.hotel-wrapper img:hover {
+    box-shadow: 0 0 15px 2px #555;
+}
+
+div.info {
+    background-color: rgba( 0, 0, 0, 0.8);
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #ccc;
+    /*    width: 100%;*/
+}
+
+div.home-wrapper {
+    margin-bottom: 2px;
+}
+
+
+div.home-wrapper div.info div.stars {
+    float: left;
+}
+
+a.qva-link {
+    color: #8CC63F;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+}
+/*weather plugin*/
+@font-face {
+    font-family: 'weather';
+/*
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+*/
+    src: url('../fonts/artill_clean_icons-webfont.eot');
+    src: url('../fonts/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/artill_clean_icons-webfont.woff') format('woff'),
+         url('../fonts/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('../fonts/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icon-0:before { content: ":"; }
+.icon-1:before { content: "p"; }
+.icon-2:before { content: "S"; }
+.icon-3:before { content: "Q"; }
+.icon-4:before { content: "S"; }
+.icon-5:before { content: "W"; }
+.icon-6:before { content: "W"; }
+.icon-7:before { content: "W"; }
+.icon-8:before { content: "W"; }
+.icon-9:before { content: "I"; }
+.icon-10:before { content: "W"; }
+.icon-11:before { content: "I"; }
+.icon-12:before { content: "I"; }
+.icon-13:before { content: "I"; }
+.icon-14:before { content: "I"; }
+.icon-15:before { content: "W"; }
+.icon-16:before { content: "I"; }
+.icon-17:before { content: "W"; }
+.icon-18:before { content: "U"; }
+.icon-19:before { content: "Z"; }
+.icon-20:before { content: "Z"; }
+.icon-21:before { content: "Z"; }
+.icon-22:before { content: "Z"; }
+.icon-23:before { content: "Z"; }
+.icon-24:before { content: "E"; }
+.icon-25:before { content: "E"; }
+.icon-26:before { content: "3"; }
+.icon-27:before { content: "a"; }
+.icon-28:before { content: "A"; }
+.icon-29:before { content: "a"; }
+.icon-30:before { content: "A"; }
+.icon-31:before { content: "6"; }
+.icon-32:before { content: "1"; }
+.icon-33:before { content: "6"; }
+.icon-34:before { content: "1"; }
+.icon-35:before { content: "W"; }
+.icon-36:before { content: "1"; }
+.icon-37:before { content: "S"; }
+.icon-38:before { content: "S"; }
+.icon-39:before { content: "S"; }
+.icon-40:before { content: "M"; }
+.icon-41:before { content: "W"; }
+.icon-42:before { content: "I"; }
+.icon-43:before { content: "W"; }
+.icon-44:before { content: "a"; }
+.icon-45:before { content: "S"; }
+.icon-46:before { content: "U"; }
+.icon-47:before { content: "S"; }
+#weather-plugin #weather {
+/*  width: 500px;*/
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#weather-plugin i {
+  color: #fff;
+  font-family: weather;
+  font-size: 150px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+  text-transform: none;
+}
+#weather-plugin #weather h2 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 70px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+#weather-plugin #weather .currently {
+  margin: 0 20px;
+  color: #fff;
+}
+
+/*tours*/
+.tour-wrapper{
+    padding: 2px;
+    text-align: center;
+    border: 3px solid #e4e4e4;
+}
+.tour-wrapper:hover{
+    border-color: #8CC63F;
+    transition: border-color .7s ease;
+}
+.tour-wrapper img{
+    width: 100%;
+    height: 250px;
+}
+.team-grids-info img {
+    height: 250px;
+}
+
+.team-grids a:hover{
+    text-decoration: none;
+}
+
+
+/*parte del bloque kwon cuba. el resto del los estilos permanecen en el archivo original */
+.about .wrapper {
+    background-color: rgba(231, 199, 159, 0.4);
+    padding: 10px;
+}
+
+.about .wrapper p {
+    width: 100%;
+    color: #fff;
+}
+
+/*contact*/
+div#contact input, div#contact textarea{
+    border: 2px solid #ccc;
+}
+
+/*single page home*/
+div.amenities {
+   padding: 10px; 
+}
+div.amenities div.item-amenity span{
+    padding: 5px;
+    font-size: 1.1em;
+/*    background-color: rgba(231, 199, 159, 0.2);*/
+    border: 1px solid #8CC63F;
+    border-bottom: 3px solid #8CC63F;        
+/*    border-radius: 25px;*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    padding: 10px;*/
+}
+span.show-more-amenities {
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+span.show-more-amenities:hover{
+    color: #000;
+}
+
+div.amenities #no-essential-amenities {
+    visibility: hidden;
+}
+#show-less-amenities{
+    display: none;
+}
+p.home-price{
+/*    border: 1px solid black;*/
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: #8CC63F;
+    color: #fff;
+    font-weight: 400;
+}
+.single-home-book label{
+    color: #7b6c63;
+    border-bottom: 2px solid #7b6c63;
+}
+i#book-pricing{
+    color: aqua;
+}
+i.up-down-people{
+    margin-right: 10px;
+    border: 1px solid #7b6c63;
+    padding: 5px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #7b6c63;
+    cursor: pointer;
+    transition: background .3s ease-out;
+}
+i.up-down-people:hover{
+    color: #fff;
+    background: #8CC63F;
+    transition: background .3s ease-in;
+}
+div.container-fluid div.single-home-book {
+    background-color: #FFF;
+    border: 2px solid #8CC63F;
+    box-shadow: 0 0 5px 2px #8CC63F;
+    background-color: whitesmoke;
+    transition: box-shadow .3s ease;
+}
+div.container-fluid div.single-home-book:hover {
+    box-shadow: 0 0 15px 3px #8CC63F;
+    transition: box-shadow .3s ease;
+}
+div.container-fluid div.single-home-book input{
+    background-color: #eee;
+    border: 2px solid #ccc;
+}
+/*custom responsive*/
+@media (max-width: 727px) {
+    .top-menu-lang{
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 768px) {
+    .hotel-wrapper img {
+        width: 60%;
+    }
+    .hotel-wrapper {
+        text-align: center;
+        background-color: rgba(0,0,0,0.05);
+    }
+    .hotel-wrapper .info{
+        left: 30px;
+    }
+    .qva-top-menu-input-search{
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .hotel-wrapper img {
+        width: 90%;
+    }
+    .home-wrapper{
+        width: 100%;
+    }
+    .top-menu-lang{
+        width: 50px;
+    }
+    
+}
+@media (max-width: 500px) {
+    input#booking-datepicker{
+        font-size: 16px;
+    }
+    input.input-search{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 385px) {
+    input#booking-datepicker{
+        font-size: 11px;
+    }
+    input.input-search{
+        font-size: 11px;
+        padding-left: 50px;
+    }
+}
+@media (max-width: 339px) {
+    a.qva-top-nav-elem{
+        font-size: 14px
+    }
+}
