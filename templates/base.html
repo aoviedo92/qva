@@ -74,12 +74,12 @@
                 <div class="top-nav">
                     <span class="menu"> </span>
                     <ul class="nav1">
-                        <li><a href="index.html" class="active scroll">HOME</a></li>
-                        <li><a href="#about" class="scroll">HOTELS</a></li>
-                        <li><a href="#portfolio" class="scroll">HOMES</a></li>
-                        <li><a href="#team" class="scroll">CUBANIA</a></li>
-                        <li><a href="#blog" class="scroll">TOURS</a></li>
-                        <li><a href="#contact" class="scroll">ABOUT US</a></li>
+                        <li><a href="index.html" class="active scroll">{% trans 'HOME' %}</a></li>
+                        <li><a href="#about" class="scroll">{% trans 'HOTELS' %}</a></li>
+                        <li><a href="#portfolio" class="scroll">{% trans 'HOMES' %}</a></li>
+                        <li><a href="#team" class="scroll">{% trans 'CUBANIA' %}</a></li>
+                        <li><a href="#blog" class="scroll">{% trans 'TOURS' %}</a></li>
+                        <li><a href="#contact" class="scroll">{% trans 'ABOUT US' %}</a></li>
                     </ul>
                     <!-- script-for-menu -->
                     <script>
@@ -103,15 +103,15 @@
                     <div class="row main-book-form">
                         <div class="container-fluid"></div>
                         <div class="col-md-4 col-xs-12 book-search">
-                            <input type="text" class="input-search" placeholder="Hotels, Places, Tours...">
+                            <input type="text" class="input-search" placeholder="{% trans 'Hotels, Places, Tours...' %}">
                             <span class="ti-search book-lupa-icon"></span>
                         </div>
                         <div class="col-md-5 col-xs-12">
-                            <input type="text" class="input-datepicker" id="booking-datepicker" placeholder="Arrival and Departure">
+                            <input type="text" class="input-datepicker" id="booking-datepicker" placeholder="{% trans 'Arrival and Departure' %}">
                         </div>
                         <div class="col-md-3 col-xs-12 book-btn">
                             <div class="download">
-                                <a href="#">Start booking now</a>
+                                <a href="#">{% trans 'Start booking now' %}</a>
                             </div>
                         </div>
                     </div>
@@ -128,12 +128,12 @@
         <div class="container">
             <div class="footer-grids">
                 <div class="col-md-3 footer-logo">
-                    <a href="index.html"><img src="images/logo1-1.png" alt="logo" width="250" /></a>
+                    <a href="index.html"><img src="{% static 'images/logo1-1.png' %}" alt="logo" width="250" /></a>
                     <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
                     <p class="logo-text">eugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta</p>
                 </div>
                 <div class="col-md-3 recent-posts">
-                    <h4>TERMS OF SERVICES</h4>
+                    <h4>{% trans 'TERMS OF SERVICES' %}</h4>
                     <div class="recent-posts-text">
                         <p>Please read these Terms of Service carefully as they contain important information about your legal rights, remedies and obligations. By accessing or using the Airbnb Platform, you agree to comply with and be bound by these Terms of Service.</p>
                         <h5>Read more...</h5>

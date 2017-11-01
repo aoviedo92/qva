@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 <div class="about" id="about">
         <div class="container">
-            <h3>KNOW ABOUT US</h3>
+            <h3>{% trans 'KNOW ABOUT US' %}</h3>
             <span></span>
-            <p>qvandares is a platform where you can book hotels, homes, and rooms in Cuba.
-                <a href="" class="qva-link"> Also...</a> </p>
+            <p>{% trans 'qvandares is a platform where you can book hotels, homes, and rooms in Cuba.' %}
+                <a href="" class="qva-link"> {% trans 'Also' %}...</a> </p>
         </div>
     </div>
     <div class="about-bottom">
@@ -79,7 +80,7 @@
     <!--info about cuba-->
     <div class="skills">
         <div class="container about">
-            <h3 class="know-cuba">KNOW MORE ABOUT CUBA <a href="#" class="qva-link">Learn More</a></h3>
+            <h3 class="know-cuba">{% trans 'KNOW MORE ABOUT CUBA' %} <a href="#" class="qva-link">{% trans 'Learn More' %}</a></h3>
 
             <div class="row">
                 <div class="col-md-3">
@@ -113,9 +114,9 @@
     <!--homes-rooms-destinations-->
     <div class="projects about" id="portfolio">
         <div class="container">
-            <h3> BOOK A HOME/ROOM</h3>
+            <h3> {% trans 'BOOK A HOME/ROOM' %}</h3>
             <span></span>
-            <p>See all our offers <a href="#" class="qva-link">here</a></p>
+            <p>{% trans 'See all our offers' %} <a href="#" class="qva-link">{% trans 'here' %}</a></p>
         </div>
     </div>
     <div class="project-gallery">
@@ -174,9 +175,9 @@
         </div>
         <div class="project-portfolio">
             <div class="container">
-                <h4>PLACES TO VISIT</h4>
-                <p>Discover all things you can do. These are the top destinations.</p>
-                <a href="#">Sell all</a>
+                <h4>{% trans 'PLACES TO VISIT' %}</h4>
+                <p>{% trans 'Discover all things you can do. These are the top destinations.' %}</p>
+                <a href="#">{% trans 'Sell all' %}</a>
 
             </div>
         </div>
@@ -226,7 +227,7 @@
             </div>
         </div>
         <div class="sea-all read-more">
-            <a href="#">SEE ALL<span></span></a>
+            <a href="#">{% trans 'SEE ALL' %}<span></span></a>
         </div>
     </div>
     <!--//homes-rooms-destinations-->
@@ -234,9 +235,9 @@
     <div class="team" id="team">
         <div class="container">
             <div class="about">
-                <h3>OUR FEATURED TOURS</h3>
+                <h3>{% trans 'OUR FEATURED TOURS' %}</h3>
                 <span></span>
-                <p>Make your trip an unforgettable experience</p>
+                <p>{% trans 'Make your trip an unforgettable experience' %}</p>
             </div>
             <div class="team-grids">
                 <div class="col-md-4">
@@ -281,7 +282,7 @@
     <div class="blog" id="blog">
         <div class="container">
             <div class="about">
-                <h3>OUR BLOG</h3>
+                <h3>{% trans 'ARTICLES' %}</h3>
                 <span> </span>
                 <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim </p>
             </div>
@@ -373,12 +374,12 @@
     <!--contact-->
     <div class="contact">
         <div class="container" id="contact">
-            <h3>CONTACT</h3>
+            <h3>{% trans 'CONTACT' %}</h3>
             <form>
-                <input type="text" placeholder="Name" required="">
+                <input type="text" placeholder="{% trans 'Name' %}" required="">
                 <input type="email" placeholder="Email" required="">
-                <textarea type="text" required="" placeholder="Message..."></textarea>
-                <input type="submit" value="Submit">
+                <textarea type="text" required="" placeholder="{% trans 'Message' %}..."></textarea>
+                <input type="submit" value="{% trans 'Submit' %}">
             </form>
         </div>
     </div>
