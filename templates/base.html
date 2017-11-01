@@ -9,16 +9,19 @@
     <link href="{% static 'css/qva.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/themify-icons.css' %}" type="text/css" rel="stylesheet" media="all">
-    <link href="{% static 'libs/air-datepicker/datepicker.custom.min.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'libs/air-datepicker/datepicker.custom.min.css' %}" type="text/css" rel="stylesheet"
+          media="all">
     <!--web-font-->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400'
+          rel='stylesheet' type='text/css'>
     <!--//web-font-->
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-<!--    <script src="libs/DjangoAjax.js"></script>-->
+    <!--    <script src="libs/DjangoAjax.js"></script>-->
     <script src="{% static 'libs/air-datepicker/datepicker.min.js' %}"></script>
     <script src="{% static 'libs/air-datepicker/i18n/datepicker.en.js' %}"></script>
     <script src="{% static 'libs/jquery.simpleWeather.min.js' %}"></script>
@@ -29,148 +32,175 @@
 </head>
 
 <body>
-    <div class="qva-top-nav">
-        <div class="qva-top-nav-content">
-            <ul class="top-menu">
-                <li class="top-menu-login">
-                    <a class="qva-top-nav-elem qva-link">sign up</a>
-                    <a class="qva-top-nav-elem login">sign in</a>
-                </li>
-                <li class="top-menu-lang">
-                    <form class="qva-top-nav-elem">
-                        <select class="qva-top-menu-input qva-top-menu-select-lang">
-                    <option>Spanish</option>
-                    <option>English</option>
-                </select>
-                    </form>
-                </li>
-                <li class="top-menu-lang">
-                    <form class="qva-top-nav-elem">
-                        <select class="qva-top-menu-input qva-top-menu-select-lang">
-                    <option>$ USD</option>
-                    <option>€ EUR</option>
-                </select>
-                    </form>
-                </li>
-                <li class="top-menu-search">
-                    <form class="qva-top-nav-elem">
-                        <span class="ti-search lupa-icon"></span>
-                        <input type="text" placeholder="Search..." class="qva-top-menu-input qva-top-menu-input-search">
-                    </form>
-                </li>
-            </ul>
+<div class="qva-top-nav">
+    <div class="qva-top-nav-content">
+        <ul class="top-menu">
+            <li class="top-menu-login">
+                <a class="qva-top-nav-elem qva-link">sign up</a>
+                <a class="qva-top-nav-elem login">sign in</a>
+            </li>
+            <li class="top-menu-lang">
+                <form action="{% url 'set_language' %}" method="post" class="qva-top-nav-elem" id="form-set-lang">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path|slice:'3:' }}"/>
+                    <select name="language" class="qva-top-menu-input qva-top-menu-select-lang" id="select-lang">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                    selected="selected"{% endif %}>
+                                {{ language.name_local }} ({{ language.code }})
+                            </option>
+                        {% endfor %}
+                    </select>
+{#                    <input type="submit" value="Go"/>#}
+                </form>
 
-        </div>
-        <div class="clearfix"> </div>
+            </li>
+            <li class="top-menu-lang">
+                <form class="qva-top-nav-elem">
+                    <select class="qva-top-menu-input qva-top-menu-select-lang">
+                        <option>$ USD</option>
+                        <option>€ EUR</option>
+                    </select>
+                </form>
+            </li>
+            <li class="top-menu-search">
+                <form class="qva-top-nav-elem">
+                    <span class="ti-search lupa-icon"></span>
+                    <input type="text" placeholder="Search..." class="qva-top-menu-input qva-top-menu-input-search">
+                </form>
+            </li>
+        </ul>
+
     </div>
-    <!--banner-->
-    <div class="banner">
-        <!--header-->
-        <div class="header">
-            <div class="container">
-                <div class="header-logo">
-                    <img src="{% static 'images/logo1-1.png' %}" alt="qvandares" class="logo" />
-                </div>
-                <div class="top-nav">
-                    <span class="menu"> </span>
-                    <ul class="nav1">
-                        <li><a href="index.html" class="active scroll">{% trans 'HOME' %}</a></li>
-                        <li><a href="#about" class="scroll">{% trans 'HOTELS' %}</a></li>
-                        <li><a href="#portfolio" class="scroll">{% trans 'HOMES' %}</a></li>
-                        <li><a href="#team" class="scroll">{% trans 'CUBANIA' %}</a></li>
-                        <li><a href="#blog" class="scroll">{% trans 'TOURS' %}</a></li>
-                        <li><a href="#contact" class="scroll">{% trans 'ABOUT US' %}</a></li>
-                    </ul>
-                    <!-- script-for-menu -->
-                    <script>
-                        $("span.menu").click(function() {
-                            $("ul.nav1").slideToggle(300, function() {
-                                // Animation complete.
-                            });
+    <div class="clearfix"></div>
+</div>
+<!--banner-->
+<div class="banner">
+    <!--header-->
+    <div class="header">
+        <div class="container">
+            <div class="header-logo">
+                <img src="{% static 'images/logo1-1.png' %}" alt="qvandares" class="logo"/>
+            </div>
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul class="nav1">
+                    <li><a href="index.html" class="active scroll">{% trans 'HOME' %}</a></li>
+                    <li><a href="#about" class="scroll">{% trans 'HOTELS' %}</a></li>
+                    <li><a href="#portfolio" class="scroll">{% trans 'HOMES' %}</a></li>
+                    <li><a href="#team" class="scroll">{% trans 'CUBANIA' %}</a></li>
+                    <li><a href="#blog" class="scroll">{% trans 'TOURS' %}</a></li>
+                    <li><a href="#contact" class="scroll">{% trans 'ABOUT US' %}</a></li>
+                </ul>
+                <!-- script-for-menu -->
+                <script>
+                    $("span.menu").click(function () {
+                        $("ul.nav1").slideToggle(300, function () {
+                            // Animation complete.
                         });
-                    </script>
-                    <!-- /script-for-menu -->
-                </div>
-                <div class="clearfix"> </div>
+                    });
+                </script>
+                <!-- /script-for-menu -->
             </div>
+            <div class="clearfix"></div>
         </div>
-        <!--//header-->
-        <div class="container">
-            <div class="banner-title">
-                <h5>GRAB YOUR ATTENTION</h5>
-                <h1><span>TRAVELERS </span> REPOSE AND DREAM AMONG MY <span> LEAVES</span></h1>
-                <div class="container-fluid">
-                    <div class="row main-book-form">
-                        <div class="container-fluid"></div>
-                        <div class="col-md-4 col-xs-12 book-search">
-                            <input type="text" class="input-search" placeholder="{% trans 'Hotels, Places, Tours...' %}">
-                            <span class="ti-search book-lupa-icon"></span>
-                        </div>
-                        <div class="col-md-5 col-xs-12">
-                            <input type="text" class="input-datepicker" id="booking-datepicker" placeholder="{% trans 'Arrival and Departure' %}">
-                        </div>
-                        <div class="col-md-3 col-xs-12 book-btn">
-                            <div class="download">
-                                <a href="#">{% trans 'Start booking now' %}</a>
-                            </div>
+    </div>
+    <!--//header-->
+    <div class="container">
+        <div class="banner-title">
+            <h5>GRAB YOUR ATTENTION</h5>
+            <h1><span>TRAVELERS </span> REPOSE AND DREAM AMONG MY <span> LEAVES</span></h1>
+            <div class="container-fluid">
+                <div class="row main-book-form">
+                    <div class="container-fluid"></div>
+                    <div class="col-md-4 col-xs-12 book-search">
+                        <input type="text" class="input-search" placeholder="{% trans 'Hotels, Places, Tours...' %}">
+                        <span class="ti-search book-lupa-icon"></span>
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        <input type="text" class="input-datepicker" id="booking-datepicker"
+                               placeholder="{% trans 'Arrival and Departure' %}">
+                    </div>
+                    <div class="col-md-3 col-xs-12 book-btn">
+                        <div class="download">
+                            <a href="#">{% trans 'Start booking now' %}</a>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
-    <!--//banner-->
-    {% block content %} {% endblock %}
+</div>
+<!--//banner-->
+{% block content %} {% endblock %}
 
-    <!--footer-->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-grids">
-                <div class="col-md-3 footer-logo">
-                    <a href="index.html"><img src="{% static 'images/logo1-1.png' %}" alt="logo" width="250" /></a>
-                    <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore.</p>
-                    <p class="logo-text">eugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta</p>
-                </div>
-                <div class="col-md-3 recent-posts">
-                    <h4>{% trans 'TERMS OF SERVICES' %}</h4>
-                    <div class="recent-posts-text">
-                        <p>Please read these Terms of Service carefully as they contain important information about your legal rights, remedies and obligations. By accessing or using the Airbnb Platform, you agree to comply with and be bound by these Terms of Service.</p>
-                        <h5>Read more...</h5>
-                    </div>
-
-                </div>
-                <div class="col-md-3 recent-posts">
-                    <h4>FAQs</h4>
-                    <div class="recent-posts-text">
-                        <p>How...</p>
-                        <p>What...</p>
-                        <p>When...</p>
-                        <p>Where...</p>
-                    </div>
-                    <h5>Read all... </h5>
-                </div>
-                <div class="col-md-3 address">
-                    <h4>OUR ADDRESS</h4>
-                    <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta </p>
-                    <ul>
-                        <li>poner aqui las redes sociales</li>
-                        <li><span class="mail"></span><a href="mailto:example@email.com">mail@example.com</a></li>
-                    </ul>
-                </div>
-                <div class="clearfix"> </div>
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-3 footer-logo">
+                <a href="index.html"><img src="{% static 'images/logo1-1.png' %}" alt="logo" width="250"/></a>
+                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum
+                    dolore.</p>
+                <p class="logo-text">eugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
+                    praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum
+                    soluta</p>
             </div>
+            <div class="col-md-3 recent-posts">
+                <h4>{% trans 'TERMS OF SERVICES' %}</h4>
+                <div class="recent-posts-text">
+                    <p>Please read these Terms of Service carefully as they contain important information about your
+                        legal rights, remedies and obligations. By accessing or using the Airbnb Platform, you agree to
+                        comply with and be bound by these Terms of Service.</p>
+                    <h5>Read more...</h5>
+                </div>
+
+            </div>
+            <div class="col-md-3 recent-posts">
+                <h4>FAQs</h4>
+                <div class="recent-posts-text">
+                    <p>How...</p>
+                    <p>What...</p>
+                    <p>When...</p>
+                    <p>Where...</p>
+                </div>
+                <h5>Read all... </h5>
+            </div>
+            <div class="col-md-3 address">
+                <h4>OUR ADDRESS</h4>
+                <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam
+                    processus dynamicus, luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber
+                    tempor cum soluta </p>
+                <ul>
+                    <li>poner aqui las redes sociales</li>
+                    <li><span class="mail"></span><a href="mailto:example@email.com">mail@example.com</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <!--//footer-->
-    <div class="footer-bottom">
-        <p>© 2017 All rights reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
-    </div>
-    <!--smooth-scrolling-of-move-up-->
-    {% block javascript %} {% endblock %}
+</div>
+<!--//footer-->
+<div class="footer-bottom">
+    <p>© 2017 All rights reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
+</div>
+<!--smooth-scrolling-of-move-up-->
+{% block javascript %} {% endblock %}
 
-    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-    <!--//smooth-scrolling-of-move-up-->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!--//smooth-scrolling-of-move-up-->
+<script>
+    $(document).ready(function () {
+        var $formSetLang = $('form#form-set-lang');
+        var $selectLang = $formSetLang.find('select#select-lang');
+        $selectLang.change(function () {
+            $formSetLang.submit();
+        })
+    })
+</script>
 </body>
 
 </html>

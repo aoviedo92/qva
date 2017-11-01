@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-01 14:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\index\templates\index.html:7
+msgid "KNOW ABOUT US"
+msgstr ""
+
+#: .\index\templates\index.html:9
+msgid ""
+"qvandares is a platform where you can book hotels, homes, and rooms in Cuba."
+msgstr ""
+
+#: .\index\templates\index.html:10
+msgid "Also"
+msgstr ""
+
+#: .\index\templates\index.html:83
+msgid "KNOW MORE ABOUT CUBA"
+msgstr ""
+
+#: .\index\templates\index.html:83
+msgid "Learn More"
+msgstr ""
+
+#: .\index\templates\index.html:117
+msgid "BOOK A HOME/ROOM"
+msgstr ""
+
+#: .\index\templates\index.html:119
+msgid "See all our offers"
+msgstr ""
+
+#: .\index\templates\index.html:119
+msgid "here"
+msgstr ""
+
+#: .\index\templates\index.html:178
+msgid "PLACES TO VISIT"
+msgstr ""
+
+#: .\index\templates\index.html:179
+msgid "Discover all things you can do. These are the top destinations."
+msgstr ""
+
+#: .\index\templates\index.html:180
+msgid "Sell all"
+msgstr ""
+
+#: .\index\templates\index.html:230
+msgid "SEE ALL"
+msgstr ""
+
+#: .\index\templates\index.html:238
+msgid "OUR FEATURED TOURS"
+msgstr ""
+
+#: .\index\templates\index.html:240
+msgid "Make your trip an unforgettable experience"
+msgstr ""
+
+#: .\index\templates\index.html:285
+msgid "ARTICLES"
+msgstr ""
+
+#: .\index\templates\index.html:377
+msgid "CONTACT"
+msgstr ""
+
+#: .\index\templates\index.html:379
+msgid "Name"
+msgstr ""
+
+#: .\index\templates\index.html:381
+msgid "Message"
+msgstr ""
+
+#: .\index\templates\index.html:382
+msgid "Submit"
+msgstr ""

@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-01 14:09-0400\n"
+"PO-Revision-Date: 2017-11-01 14:33+0000\n"
+"Last-Translator: b'  <qv@qv.qv>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.7.13\n"
+
+#: .\qvandares\settings\base.py:88
+msgid "English"
+msgstr ""
+
+#: .\qvandares\settings\base.py:89
+msgid "Spanish"
+msgstr ""
+
+#: .\qvandares\settings\base.py:90
+msgid "French"
+msgstr ""
+
+#: .\qvandares\settings\base.py:91
+msgid "German"
+msgstr ""
+
+#: .\templates\base.html:77
+msgid "HOME"
+msgstr "INICIO"
+
+#: .\templates\base.html:78
+msgid "HOTELS"
+msgstr "HOTELES"
+
+#: .\templates\base.html:79
+msgid "HOMES"
+msgstr "CASAS"
+
+#: .\templates\base.html:80
+msgid "CUBANIA"
+msgstr "CUBANÍA"
+
+#: .\templates\base.html:81
+msgid "TOURS"
+msgstr ""
+
+#: .\templates\base.html:82
+msgid "ABOUT US"
+msgstr "ACERCA DE"
+
+#: .\templates\base.html:106
+msgid "Hotels, Places, Tours..."
+msgstr "Hoteles, Lugares, Tours..."
+
+#: .\templates\base.html:110
+msgid "Arrival and Departure"
+msgstr "Llegada y Partida"
+
+#: .\templates\base.html:114
+msgid "Start booking now"
+msgstr "Reserva ya"
+
+#: .\templates\base.html:136
+msgid "TERMS OF SERVICES"
+msgstr "TÉRMINOS DEL SERVICIO"

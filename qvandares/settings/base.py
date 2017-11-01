@@ -34,9 +34,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'lodging.apps.LodgingConfig',
-    'index.apps.IndexConfig',
 ]
+
+THIRD_PARTY_APPS = [
+    'rosetta'
+]
+QVA_APPS = [
+    'lodging.apps.LodgingConfig',
+    'index.apps.IndexConfig'
+]
+INSTALLED_APPS += THIRD_PARTY_APPS + QVA_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,6 +98,9 @@ LANGUAGES = [
     ('de', _('German')),
 ]
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'  # explicito mejor que implicito
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, '../locale'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
