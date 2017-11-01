@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 from seo.models import SeoTag
 
 
@@ -13,6 +13,8 @@ class Lodging(SeoTag):
 
     class Meta:
         abstract = True
+        verbose_name = _('Lodging')
+        verbose_name_plural = _('Lodgings')
 
 
 class Hotel(Lodging):
@@ -23,4 +25,11 @@ class Hotel(Lodging):
 class Home(Lodging):
     """Hospedaje en casas"""
     importance = models.PositiveIntegerField()  # conveniencia/relevancia. se escogen los mas altos para q salgan en la pag princp. en el listado de casas se muestran por defecto ordenados por relevancia.
-    max_adults = models.PositiveIntegerField()
+    max_guest = models.PositiveIntegerField()
+    bedrooms = models.PositiveIntegerField()
+    beds = models.PositiveIntegerField()
+    baths = models.PositiveIntegerField()
+    weekly_discount = models.PositiveIntegerField(blank=True, null=True)
+    monthly_discount = models.PositiveIntegerField(blank=True, null=True)
+    cleaning_fee = models.PositiveIntegerField(blank=True, null=True)
+    house_rules = models.TextField()
