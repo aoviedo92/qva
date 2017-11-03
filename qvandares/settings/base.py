@@ -37,11 +37,13 @@ INSTALLED_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'rosetta'
+    # 'rosetta'
 ]
 QVA_APPS = [
+    # 'photos.apps.PhotosConfig',
+    'images.apps.ImagesConfig',
     'lodging.apps.LodgingConfig',
-    'index.apps.IndexConfig'
+    'index.apps.IndexConfig',
 ]
 INSTALLED_APPS += THIRD_PARTY_APPS + QVA_APPS
 

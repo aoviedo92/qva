@@ -7,10 +7,11 @@
     <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} qvandares{% endblock %}</title>
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/qva.css' %}" type="text/css" rel="stylesheet" media="all">
-    <link href="{% static 'css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/themify-icons.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'libs/air-datepicker/datepicker.custom.min.css' %}" type="text/css" rel="stylesheet"
           media="all">
+    <link rel="stylesheet" href="{% static 'libs/flag-icon/css/flag-icon.css' %}">
     <!--web-font-->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
           type='text/css'>
@@ -20,15 +21,18 @@
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-    <!--    <script src="libs/DjangoAjax.js"></script>-->
-    <script src="{% static 'libs/air-datepicker/datepicker.min.js' %}"></script>
-    <script src="{% static 'libs/air-datepicker/i18n/datepicker.en.js' %}"></script>
-    <script src="{% static 'libs/jquery.simpleWeather.min.js' %}"></script>
-    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+
     <!-- //js -->
     <meta name="keywords" content="{{ meta_keywords }}">
     <meta name="description" content="{{ meta_description }}">
+
+<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+<!--    <script src="libs/DjangoAjax.js"></script>-->
+<script src="{% static 'libs/air-datepicker/datepicker.min.js' %}"></script>
+<script src="{% static 'libs/air-datepicker/i18n/datepicker.en.js' %}"></script>
+<script src="{% static 'libs/jquery.simpleWeather.min.js' %}"></script>
+<script src="{% static 'js/modernizr.custom.js' %}"></script>
+{#    <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>#}
 </head>
 
 <body>
@@ -40,7 +44,8 @@
                 <a class="qva-top-nav-elem login">sign in</a>
             </li>
             <li class="top-menu-lang">
-                <form action="{% url 'set_language' %}" method="post" class="qva-top-nav-elem" id="form-set-lang">{% csrf_token %}
+                <form action="{% url 'set_language' %}" method="post" class="qva-top-nav-elem"
+                      id="form-set-lang">{% csrf_token %}
                     <input name="next" type="hidden" value="{{ request.path|slice:'3:' }}"/>
                     <select name="language" class="qva-top-menu-input qva-top-menu-select-lang" id="select-lang">
                         {% get_current_language as LANGUAGE_CODE %}
@@ -48,13 +53,20 @@
                         {% get_language_info_list for LANGUAGES as languages %}
                         {% for language in languages %}
                             <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                    class="flag-icon flag-icon-es"
                                     selected="selected"{% endif %}>
-                                {{ language.name_local }} ({{ language.code }})
+                                {{ language.name_local|title }}
                             </option>
                         {% endfor %}
                     </select>
-{#                    <input type="submit" value="Go"/>#}
                 </form>
+{#            <div class="lang">#}
+{#                <span class="flag-icon flag-icon-es" style="font-size: 24px"></span>#}
+{#                <span class="flag-icon flag-icon-it"></span>#}
+{#                <span class="flag-icon flag-icon-en"></span>#}
+{#                <span class="flag-icon flag-icon-de"></span>#}
+{#                <span class="flag-icon flag-icon-fr"></span>#}
+{#            </div>#}
 
             </li>
             <li class="top-menu-lang">
@@ -187,11 +199,13 @@
 <div class="footer-bottom">
     <p>© 2017 All rights reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
 </div>
-<!--smooth-scrolling-of-move-up-->
-{% block javascript %} {% endblock %}
 
+<!--smooth-scrolling-of-move-up-->
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!--//smooth-scrolling-of-move-up-->
+
+
+{% block javascript %} {% endblock %}
 <script>
     $(document).ready(function () {
         var $formSetLang = $('form#form-set-lang');

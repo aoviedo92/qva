@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from images.models import Photo
 from seo.models import SeoTag
 
 
@@ -33,3 +35,9 @@ class Home(Lodging):
     monthly_discount = models.PositiveIntegerField(blank=True, null=True)
     cleaning_fee = models.PositiveIntegerField(blank=True, null=True)
     house_rules = models.TextField()
+    main_photo = models.OneToOneField(Photo, blank=True, null=True, related_name='home_main_photo')
+    photos = models.ManyToManyField(Photo, related_name='home_photos')
+
+    class Meta:
+        verbose_name = _('Home')
+        verbose_name_plural = _('Homes')
