@@ -23,6 +23,10 @@ class Hotel(Lodging):
     """ hospedaje en hoteles """
     description = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name = _('Hotel')
+        verbose_name_plural = _('Hotels')
+
 
 class Home(Lodging):
     """Hospedaje en casas"""
@@ -41,3 +45,6 @@ class Home(Lodging):
     class Meta:
         verbose_name = _('Home')
         verbose_name_plural = _('Homes')
+
+    def __str__(self):
+        return self.name

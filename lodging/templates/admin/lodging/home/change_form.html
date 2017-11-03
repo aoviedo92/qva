@@ -1,0 +1,13 @@
+{% extends "admin/change_form.html" %}
+{% block inline_field_sets %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include inline_admin_formset.opts.template %}
+{% endfor %}
+<fieldset class="module">
+  <h2>Upload Photos</h2>
+    <h3>Main photo</h3>
+  <input name="main_photo" type="file" />
+    <h3>Others photos</h3>
+  <input name="photos" type="file" multiple />
+</fieldset>
+{% endblock inline_field_sets %}
