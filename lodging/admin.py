@@ -2,7 +2,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
 from images.models import Photo
-from lodging.models import Home, Hotel
+from lodging.models import Home, Hotel, Amenity
 
 
 @admin.register(Home)
@@ -24,3 +24,8 @@ class HomeAdmin(TranslationAdmin):
 @admin.register(Hotel)
 class HotelAdmin(TranslationAdmin):
     pass
+
+
+@admin.register(Amenity)
+class AmenityAdmin(TranslationAdmin):
+    list_display = ['type', 'amenity', 'font_icon', 'img_icon']

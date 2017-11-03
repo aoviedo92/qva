@@ -1,12 +1,27 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from model_utils.models import TimeFramedModel, TimeStampedModel
+from model_utils import Choices
+from model_utils.models import TimeStampedModel
+
 from images.models import Photo
 from seo.models import SeoTag
 
 
-class Amenitie(models.Model):
+class Amenity(models.Model):
     """ Comodidades que presenta una casa/room/hotel"""
+    TYPE_CHOICES = Choices(('basic', _('Basic')), ('secondary', _('Secondary')))
+    type = models.CharField(choices=TYPE_CHOICES, default=TYPE_CHOICES.basic, max_length=20)
+    amenity = models.CharField(max_length=100)
+    font_icon = models.CharField(max_length=20, blank=True)
+    img_icon = models.CharField(max_length=20, blank=True)
+
+    class Meta:
+        verbose_name_plural = _('Amenities')
+        verbose_name = _('Amenity')
+
+    def __str__(self):
+        return self.amenity
 
 
 class Lodging(SeoTag, TimeStampedModel):
@@ -14,6 +29,7 @@ class Lodging(SeoTag, TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField(max_length=200)
+    amenities = models.ManyToManyField(Amenity)
 
     class Meta:
         abstract = True
@@ -42,6 +58,7 @@ class Home(Lodging):
     house_rules = models.TextField()
     main_photo = models.OneToOneField(Photo, blank=True, null=True, related_name='home_main_photo')
     photos = models.ManyToManyField(Photo, related_name='home_photos')
+    host = models.OneToOneField(User, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Home')
