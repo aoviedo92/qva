@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from model_utils.models import TimeFramedModel, TimeStampedModel
 from images.models import Photo
 from seo.models import SeoTag
 
@@ -9,19 +9,18 @@ class Amenitie(models.Model):
     """ Comodidades que presenta una casa/room/hotel"""
 
 
-class Lodging(SeoTag):
+class Lodging(SeoTag, TimeStampedModel):
     """ modelo abstracto que se refiere a un hospedaje en general. """
     name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
+    description = models.TextField(max_length=200)
 
     class Meta:
         abstract = True
-        verbose_name = _('Lodging')
-        verbose_name_plural = _('Lodgings')
 
 
 class Hotel(Lodging):
     """ hospedaje en hoteles """
-    description = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = _('Hotel')
@@ -30,7 +29,9 @@ class Hotel(Lodging):
 
 class Home(Lodging):
     """Hospedaje en casas"""
-    importance = models.PositiveIntegerField()  # conveniencia/relevancia. se escogen los mas altos para q salgan en la pag princp. en el listado de casas se muestran por defecto ordenados por relevancia.
+    # conveniencia/relevancia. se escogen los mas altos para q salgan en la pag princp. en el listado de casas
+    #  se muestran por defecto ordenados por relevancia.
+    importance = models.PositiveIntegerField()
     max_guest = models.PositiveIntegerField()
     bedrooms = models.PositiveIntegerField()
     beds = models.PositiveIntegerField()
