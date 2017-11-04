@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = [
     # 'rosetta'
 ]
 QVA_APPS = [
-    # 'photos.apps.PhotosConfig',
+    'destination.apps.DestinationConfig',
     'images.apps.ImagesConfig',
     'lodging.apps.LodgingConfig',
     'index.apps.IndexConfig',

@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
 
+from destination.models import Destination
 from images.models import Photo
 from seo.models import SeoTag
 
@@ -30,6 +31,7 @@ class Lodging(SeoTag, TimeStampedModel):
     slug = models.SlugField(max_length=100, unique=True)
     description = models.TextField(max_length=200)
     amenities = models.ManyToManyField(Amenity)
+    destination = models.ForeignKey(Destination, null=True, blank=True)
 
     class Meta:
         abstract = True

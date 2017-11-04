@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from destination.models import Province, Destination
+
+admin.site.register(Province)
+admin.site.register(Destination)
