@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from geoposition.fields import GeopositionField
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
 
@@ -29,9 +30,10 @@ class Lodging(SeoTag, TimeStampedModel):
     """ modelo abstracto que se refiere a un hospedaje en general. """
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(max_length=200)
+    description = models.TextField()
     amenities = models.ManyToManyField(Amenity)
     destination = models.ForeignKey(Destination, null=True, blank=True)
+    position = GeopositionField(null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -58,7 +60,7 @@ class Home(Lodging):
     monthly_discount = models.PositiveIntegerField(blank=True, null=True)
     cleaning_fee = models.PositiveIntegerField(blank=True, null=True)
     house_rules = models.TextField()
-    main_photo = models.OneToOneField(Photo, blank=True, null=True, related_name='home_main_photo')
+    main_photo = models.OneToOneField(Photo, blank=True, null=True)
     photos = models.ManyToManyField(Photo, related_name='home_photos')
     host = models.OneToOneField(User, null=True, blank=True)
 

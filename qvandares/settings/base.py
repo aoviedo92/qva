@@ -37,7 +37,8 @@ INSTALLED_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # 'rosetta'
+    # 'rosetta',
+    'geoposition'
 ]
 QVA_APPS = [
     'destination.apps.DestinationConfig',
@@ -79,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'qvandares.wsgi.application'
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -115,3 +115,6 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+
+# geoposition
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCqWBl3aHat1kkmXPHRJnn_-Jw3DVkOq7o'
