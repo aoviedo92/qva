@@ -65,4 +65,9 @@ docs/_build/
 # PyBuilder
 target/
 
+dumpdata/
 
+
+media/
+static/libs/bootstrap/
+static/libs/flag-icon/
