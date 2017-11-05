@@ -6,7 +6,7 @@ from django.db import models
 
 
 def photo_folder(instance, filename):
-    return '{0}/{1}'.format(instance.model, filename)
+    return '{0}-{1}'.format(instance.model, filename)
 
 
 class Photo(models.Model):

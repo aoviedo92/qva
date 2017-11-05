@@ -7,7 +7,7 @@ from lodging.models import Home, Hotel, Amenity
 
 @admin.register(Home)
 class HomeAdmin(TranslationAdmin):
-    list_display = ['name', 'description', 'importance', 'position']
+    list_display = ['name', 'description', 'importance', 'destination']
     prepopulated_fields = {'slug': ['name']}
     exclude = ['main_photo', 'photos']
 
