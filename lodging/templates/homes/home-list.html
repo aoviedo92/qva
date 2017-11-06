@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans 'Homes & Rooms in Cuba' %} {% endblock %}
+{% block inside_header %}
+    {# sobreescribir el bloque para quitar este contenido, o usar el espacio para captar atencion #}
+{% endblock %}
+{% block content %}
+    <style>
+        .bc{border: 1px solid black}
+    .homes-filter input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+        margin: 0;
+}
+    .main-book-form p{font-weight: bold}
+    </style>
+    <div class="main-book-form homes-filter container-fluid">
+        <div class="col-md-2">
+            <label for="cant-adults">{% trans "Guests" %}</label>
+            <input type="number" min="0" id="cant-adults" placeholder="Adults">
+            <input type="number" min="0" id="cant-children" placeholder="Children 2-12">
+        </div>
+        <div class="col-md-2">
+            <label for="price">{% trans "Price" %}</label>
+            <input type="number" min="0" id="price" placeholder="min"><input type="number" min="0" placeholder="max">
+        </div>
+        <div class="col-md-3">
+            <label for="destination">{% trans "Destination" %}</label>
+            <input type="text" id="destination" placeholder="Try Old Havana">
+        </div>
+        <div class="col-md-3 filter-checkbok">
+            <p>{% trans "Room type" %}</p>
+            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
+            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
+            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
+        </div>
+        <div class="col-md-2 book-btn">
+            <div class="download">
+                <a href="#">Start searching</a>
+            </div>
+        </div>
+    </div>
+    {% for foo in object_list %}
+        <p>{{ foo }}</p>
+    {% endfor %}
+
+{% endblock %}

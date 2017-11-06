@@ -23,7 +23,7 @@
     {% else %}
         {% include 'includes/statics/js-prod.html' %}
     {% endif %}
-<!--    <script src="libs/DjangoAjax.js"></script>-->
+    <!--    <script src="libs/DjangoAjax.js"></script>-->
 </head>
 
 <body>
@@ -51,13 +51,13 @@
                         {% endfor %}
                     </select>
                 </form>
-{#            <div class="lang">#}
-{#                <span class="flag-icon flag-icon-es" style="font-size: 24px"></span>#}
-{#                <span class="flag-icon flag-icon-it"></span>#}
-{#                <span class="flag-icon flag-icon-en"></span>#}
-{#                <span class="flag-icon flag-icon-de"></span>#}
-{#                <span class="flag-icon flag-icon-fr"></span>#}
-{#            </div>#}
+                {#            <div class="lang">#}
+                {#                <span class="flag-icon flag-icon-es" style="font-size: 24px"></span>#}
+                {#                <span class="flag-icon flag-icon-it"></span>#}
+                {#                <span class="flag-icon flag-icon-en"></span>#}
+                {#                <span class="flag-icon flag-icon-de"></span>#}
+                {#                <span class="flag-icon flag-icon-fr"></span>#}
+                {#            </div>#}
 
             </li>
             <li class="top-menu-lang">
@@ -90,28 +90,21 @@
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul class="nav1">
-                    <li><a href="index.html" class="active scroll">{% trans 'HOME' %}</a></li>
+                    <li><a href="{% url 'index:home' %}" class="active scroll">{% trans 'HOME' %}</a></li>
                     <li><a href="#about" class="scroll">{% trans 'HOTELS' %}</a></li>
-                    <li><a href="#portfolio" class="scroll">{% trans 'HOMES' %}</a></li>
+                    <li><a href="{% url 'lodging:home_list' %}" class="scroll">{% trans 'HOMES' %}</a></li>
                     <li><a href="#team" class="scroll">{% trans 'CUBANIA' %}</a></li>
                     <li><a href="#blog" class="scroll">{% trans 'TOURS' %}</a></li>
                     <li><a href="#contact" class="scroll">{% trans 'ABOUT US' %}</a></li>
                 </ul>
-                <!-- script-for-menu -->
-                <script>
-                    $("span.menu").click(function () {
-                        $("ul.nav1").slideToggle(300, function () {
-                            // Animation complete.
-                        });
-                    });
-                </script>
-                <!-- /script-for-menu -->
+
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
     <!--//header-->
-    <div class="container">
+    {% block inside_header %}
+        <div class="container">
         <div class="banner-title">
             <h5>GRAB YOUR ATTENTION</h5>
             <h1><span>TRAVELERS </span> REPOSE AND DREAM AMONG MY <span> LEAVES</span></h1>
@@ -136,6 +129,7 @@
 
         </div>
     </div>
+    {% endblock inside_header %}
 </div>
 <!--//banner-->
 {% block content %} {% endblock %}
@@ -203,7 +197,14 @@
         var $selectLang = $formSetLang.find('select#select-lang');
         $selectLang.change(function () {
             $formSetLang.submit();
-        })
+        });
+        //script-for-menu -->
+        $("span.menu").click(function () {
+            $("ul.nav1").slideToggle(300, function () {
+                // Animation complete.
+            });
+        });
+        //script-for-menu -->
     })
 </script>
 </body>

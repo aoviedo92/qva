@@ -288,28 +288,6 @@
             </div>
             <div class="blog-grids">
                 <div class="blog-grids-left">
-                    <!-- banner-text Slider starts Here -->
-                    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
-                    <script>
-                        // You can also use "$(window).load(function() {"
-                        $(function() {
-                            // Slideshow 4
-                            $("#slider4").responsiveSlides({
-                                auto: true,
-                                pager: true,
-                                nav: true,
-                                speed: 500,
-                                namespace: "callbacks",
-                                before: function() {
-                                    $('.events').append("<li>before event fired.</li>");
-                                },
-                                after: function() {
-                                    $('.events').append("<li>after event fired.</li>");
-                                }
-                            });
-                        });
-                    </script>
-                    <!--//End-slider-script -->
                     <div id="top" class="callbacks_container">
                         <ul class="rslides" id="slider4">
                             <li>
@@ -386,6 +364,10 @@
     <!--//contact-->
 {% endblock %}
 {% block javascript %}
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+                    <script>
+
+                    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#booking-datepicker').datepicker({
@@ -409,6 +391,19 @@
                 },
                 error: function(error) {
                     $("#weather").html('<p>' + error + '</p>');
+                }
+            });
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function() {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function() {
+                    $('.events').append("<li>after event fired.</li>");
                 }
             });
         });

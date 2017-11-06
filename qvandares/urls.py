@@ -25,5 +25,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('index.urls', namespace='index', app_name='index'))
+    url(r'^lodging/', include('lodging.urls', namespace='lodging', app_name='lodging')),
+    url(r'^', include('index.urls', namespace='index', app_name='index')),
 )
