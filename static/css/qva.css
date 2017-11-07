@@ -1,9 +1,11 @@
-.left{
+.left {
     float: left;
 }
-.right{
+
+.right {
     float: right;
 }
+
 textarea:focus,
 input:focus,
 select:focus {
@@ -582,9 +584,23 @@ div.container-fluid div.single-home-book input {
 }
 
 /*homes list*/
-.homes-filter input[type="checkbox"]{
+.homes-filter input[type="checkbox"] {
     width: 20px;
     height: 20px;
+}
+
+div.homes-filter div.home-wrapper img {
+    height: 350px;
+}
+
+.homes-filter input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.main-book-form p.checkbox-label {
+    font-weight: bold
 }
 
 /*custom responsive*/
