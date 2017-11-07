@@ -60,7 +60,7 @@ class Home(Lodging):
     monthly_discount = models.PositiveIntegerField(blank=True, null=True)
     cleaning_fee = models.PositiveIntegerField(blank=True, null=True)
     house_rules = models.TextField()
-    main_photo = models.OneToOneField(Photo, blank=True, null=True)
+    main_photo = models.ForeignKey(Photo, blank=True, null=True)
     photos = models.ManyToManyField(Photo, related_name='home_photos')
     host = models.OneToOneField(User, null=True, blank=True)
 

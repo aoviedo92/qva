@@ -4,9 +4,12 @@ from uuid import uuid4
 from PIL import Image as Img
 from django.db import models
 
+QUALITY_THUMB = 75
+QUALITY_RESIZE_1200x800 = 90
+
 
 def photo_folder(instance, filename):
-    return '{0}-{1}'.format(instance.model, filename)
+    return '{0}/{1}'.format(instance.model, filename)
 
 
 class Photo(models.Model):
@@ -21,7 +24,7 @@ class Photo(models.Model):
         thumb = Img.open(image)
         thumb.thumbnail((200, 200), Img.ANTIALIAS)
         b_thumb = BytesIO()
-        thumb.save(b_thumb, 'JPEG', quality=75)
+        thumb.save(b_thumb, 'JPEG', quality=QUALITY_THUMB)
         # llamar con save=false para no crear un ciclo de llamadas, ya q al hacer save llama al
         # self.save q a su vez vuelve a llamar a make_thumbnail. aqui se llama a self.thumbnail.save
         # y no se hace simplemente como self.original pq este fichero nunca se subio. ademas el self.original
@@ -37,7 +40,7 @@ class Photo(models.Model):
                 # resizar y hacer thumbnail con la imagen resizada obtenida
                 image = image.resize((Photo.DEFAULT_WIDTH, Photo.DEFAULT_HEIGHT), Img.ANTIALIAS)
                 image_resized = BytesIO()
-                image.save(image_resized, 'JPEG', quality=90)
+                image.save(image_resized, 'JPEG', quality=QUALITY_RESIZE_1200x800)
                 self.original.file = image_resized
                 self.make_thumbnail(image_resized, photo_saved_name)
             else:
