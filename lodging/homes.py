@@ -7,33 +7,35 @@ from django.views.generic.list import ListView
 from lodging.models import Home
 
 
-def apply_filters(get_request, qs):
-    cant_adults = get_request.get('cant-adults', '')
+def apply_filters(get_params):
+    filters = {}
+    cant_adults = get_params.get('cant_adults', '')
+    min_price = get_params.get('min_price', '')
+    max_price = get_params.get('max_price', '')
+    # destination = get_request.get('destination', '')
     if cant_adults:
-        qs = qs.filter(max_guest=int(cant_adults))
-    seted_filters = {'cant_adults': cant_adults}
+        filters.update({'max_guest': cant_adults})
+    if min_price:
+        filters.update({'price__gte': min_price})
+    if max_price:
+        filters.update({'price__lte': max_price})
+    seted_filters = {'cant_adults': cant_adults, 'min_price': min_price, 'max_price': max_price}
+    qs = Home.objects.filter(**filters)
     return qs, seted_filters
 
 
 def home_list(request):
-    homes, seted_filters = apply_filters(request.GET, Home.objects.all())
-    # homes = Home.objects.all()
-    # homes = range(1000)
+    homes, seted_filters = apply_filters(request.GET)
     paginator = Paginator(homes, 6)
     page = request.GET.get('page', 1)
     try:
-        print('try page %s' % page)
         homes = paginator.page(page)
     except EmptyPage:
-        print('empty page')
         homes = paginator.page(paginator.num_pages)
     except PageNotAnInteger:
-        print('page not an int')
         homes = paginator.page(1)
     context = {'homes': homes, 'title': _('Homes & Rooms in Cuba')}
     context.update(seted_filters)
-    # if request.is_ajax():
-    #     return render(request, 'homes/includes/list.html', context)
     return render(request, 'homes/home-list.html', context)
 
 

@@ -6,19 +6,19 @@
 {% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    <div class="main-book-form homes-filter">
+    <div class="main-book-form homes-filter container-fluid">
         <form method="get">
             <div class="container-fluid">
                 <div class="col-md-2">
                     <label for="cant-adults">{% trans "Guests" %}</label>
-                    <input type="number" min="0" name="cant-adults" id="cant-adults" placeholder="Adults"
+                    <input type="number" min="1" name="cant_adults" id="cant-adults" placeholder="Adults"
                            value="{{ cant_adults }}">
-                    <input type="number" min="0" name="cant-children" id="cant-children" placeholder="Children 2-12">
+                    <input type="number" min="0" name="cant_children" id="cant-children" placeholder="Children 2-12">
                 </div>
                 <div class="col-md-2">
                     <label for="price">{% trans "Price" %}</label>
-                    <input type="number" min="0" name="price" id="price" placeholder="min"><input type="number" min="0"
-                                                                                                  placeholder="max">
+                    <input type="number" min="1" name="min_price" id="price" placeholder="min" value="{{ min_price }}">
+                    <input type="number" min="1" name="max_price" placeholder="max" value="{{ max_price }}">
                 </div>
                 <div class="col-md-3">
                     <label for="destination">{% trans "Destination" %}</label>
@@ -26,9 +26,9 @@
                 </div>
                 <div class="col-md-3 filter-checkbok">
                     <p class="checkbox-label">{% trans "Room type" %}</p>
-                    <p><input type="checkbox" name="room-type" id="room-type" value="Entire home">Entire home</p>
-                    <p><input type="checkbox" name="room-type" id="room-type" value="Shared room">Shared room</p>
-                    <p><input type="checkbox" name="room-type" id="room-type" value="Private room">Private room</p>
+                    <p><input type="checkbox" name="entire_room" id="room-type" value="Entire home">Entire home</p>
+                    <p><input type="checkbox" name="shared_room" id="room-type" value="Shared room">Shared room</p>
+                    <p><input type="checkbox" name="private_room" id="room-type" value="Private room">Private room</p>
                 </div>
                 <div class="col-md-2 book-btn">
                     <div class="download">

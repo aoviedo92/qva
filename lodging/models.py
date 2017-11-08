@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls.base import resolve
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from geoposition.fields import GeopositionField
 from model_utils import Choices
@@ -9,7 +9,6 @@ from model_utils.models import TimeStampedModel
 from destination.models import Destination
 from images.models import Photo
 from seo.models import SeoTag
-from django.urls import reverse
 
 
 class Amenity(models.Model):
@@ -36,6 +35,7 @@ class Lodging(SeoTag, TimeStampedModel):
     amenities = models.ManyToManyField(Amenity)
     destination = models.ForeignKey(Destination, null=True, blank=True)
     position = GeopositionField(null=True, blank=True)
+    price = models.PositiveIntegerField()
 
     class Meta:
         abstract = True
@@ -53,6 +53,8 @@ class Home(Lodging):
     """Hospedaje en casas"""
     # conveniencia/relevancia. se escogen los mas altos para q salgan en la pag princp. en el listado de casas
     #  se muestran por defecto ordenados por relevancia.
+    ROOM_TYPE = Choices(('entire_room', _('Entire home')), ('shared_room', _('Shared room')),
+                        ('private_room', _('Shared room')))
     importance = models.PositiveIntegerField()
     max_guest = models.PositiveIntegerField()
     bedrooms = models.PositiveIntegerField()
@@ -65,6 +67,7 @@ class Home(Lodging):
     main_photo = models.ForeignKey(Photo, blank=True, null=True)
     photos = models.ManyToManyField(Photo, related_name='home_photos')
     host = models.OneToOneField(User, null=True, blank=True)
+    type = models.CharField(choices=ROOM_TYPE, default=ROOM_TYPE.entire_room, max_length=20)
 
     class Meta:
         verbose_name = _('Home')
@@ -75,4 +78,4 @@ class Home(Lodging):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('lodging:home_detail', args=[str(self.slug)])
+        return reverse('lodging:home_detail', kwargs={'slug': self.slug})
