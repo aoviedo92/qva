@@ -6,33 +6,65 @@
 {% endblock %}
 {% block content %}
     <h1>{{ title }}</h1>
-    <div class="main-book-form homes-filter container-fluid">
-        <div class="col-md-2">
-            <label for="cant-adults">{% trans "Guests" %}</label>
-            <input type="number" min="0" id="cant-adults" placeholder="Adults">
-            <input type="number" min="0" id="cant-children" placeholder="Children 2-12">
-        </div>
-        <div class="col-md-2">
-            <label for="price">{% trans "Price" %}</label>
-            <input type="number" min="0" id="price" placeholder="min"><input type="number" min="0" placeholder="max">
-        </div>
-        <div class="col-md-3">
-            <label for="destination">{% trans "Destination" %}</label>
-            <input type="text" id="destination" placeholder="Try Old Havana">
-        </div>
-        <div class="col-md-3 filter-checkbok">
-            <p class="checkbox-label">{% trans "Room type" %}</p>
-            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
-            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
-            <p><input type="checkbox" id="room-type" value="Entire home">Entire home</p>
-        </div>
-        <div class="col-md-2 book-btn">
-            <div class="download">
-                <a href="#">Start searching</a>
+    <div class="main-book-form homes-filter">
+        <form method="get">
+            <div class="container-fluid">
+                <div class="col-md-2">
+                    <label for="cant-adults">{% trans "Guests" %}</label>
+                    <input type="number" min="0" name="cant-adults" id="cant-adults" placeholder="Adults"
+                           value="{{ cant_adults }}">
+                    <input type="number" min="0" name="cant-children" id="cant-children" placeholder="Children 2-12">
+                </div>
+                <div class="col-md-2">
+                    <label for="price">{% trans "Price" %}</label>
+                    <input type="number" min="0" name="price" id="price" placeholder="min"><input type="number" min="0"
+                                                                                                  placeholder="max">
+                </div>
+                <div class="col-md-3">
+                    <label for="destination">{% trans "Destination" %}</label>
+                    <input type="text" name="destination" id="destination" placeholder="Try Old Havana">
+                </div>
+                <div class="col-md-3 filter-checkbok">
+                    <p class="checkbox-label">{% trans "Room type" %}</p>
+                    <p><input type="checkbox" name="room-type" id="room-type" value="Entire home">Entire home</p>
+                    <p><input type="checkbox" name="room-type" id="room-type" value="Shared room">Shared room</p>
+                    <p><input type="checkbox" name="room-type" id="room-type" value="Private room">Private room</p>
+                </div>
+                <div class="col-md-2 book-btn">
+                    <div class="download">
+                        {#                <a href="#">Start searching</a>#}
+                        <input type="submit" value="Start searching">
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <hr>
-    {% include 'homes/includes/list.html' %}
+    <div class="container-fluid">
+        <div id="homes-list" class="infinite-container">
+            {% include 'homes/includes/list.html' %}
+        </div>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+        {% endif %}
+        <div class="loading" style="display: none;">
+            Loading...
+        </div>
+    </div>
+{% endblock %}
 
+{% block javascript %}
+    <script>
+        $(function () {
+            var infinite = new Waypoint.Infinite({
+                element: $('.infinite-container')[0],
+                onBeforePageLoad: function () {
+                    $('.loading').show();
+                },
+                onAfterPageLoad: function ($items) {
+                    $('.loading').hide();
+                }
+            });
+        })
+    </script>
 {% endblock %}

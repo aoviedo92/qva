@@ -4,8 +4,8 @@ from uuid import uuid4
 from PIL import Image as Img
 from django.db import models
 
-QUALITY_THUMB = 75
-QUALITY_RESIZE_1200x800 = 90
+QUALITY_THUMB = 90
+QUALITY_RESIZE_1200x800 = 95
 
 
 def photo_folder(instance, filename):
@@ -22,7 +22,7 @@ class Photo(models.Model):
     def make_thumbnail(self, image, photo_saved_name):
         thumb_saved_name = 'thumb-' + photo_saved_name
         thumb = Img.open(image)
-        thumb.thumbnail((200, 200), Img.ANTIALIAS)
+        thumb.thumbnail((300, 300), Img.ANTIALIAS)
         b_thumb = BytesIO()
         thumb.save(b_thumb, 'JPEG', quality=QUALITY_THUMB)
         # llamar con save=false para no crear un ciclo de llamadas, ya q al hacer save llama al

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls.base import resolve
 from django.utils.translation import ugettext_lazy as _
 from geoposition.fields import GeopositionField
 from model_utils import Choices
@@ -8,6 +9,7 @@ from model_utils.models import TimeStampedModel
 from destination.models import Destination
 from images.models import Photo
 from seo.models import SeoTag
+from django.urls import reverse
 
 
 class Amenity(models.Model):
@@ -67,6 +69,10 @@ class Home(Lodging):
     class Meta:
         verbose_name = _('Home')
         verbose_name_plural = _('Homes')
+        ordering = ['-importance']
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('lodging:home_detail', args=[str(self.slug)])

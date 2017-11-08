@@ -1,11 +1,11 @@
 {% load static %}
 {% load i18n %}
-<div class="container">
+<div class="row infinite-item">
     {% for home in homes %}
-        <div class="col-md-6">
-            <div class="hotel-wrapper home-wrapper">
-                <a href="#">
-                    <img src="{{ home.main_photo.thumbnail.url }}" alt="">
+        <div class="col-md-6 col-lg-4">
+            <div class="home hotel-wrapper home-wrapper">
+                <a href="{{ home.get_absolute_url }}">
+                    <img src="{{ home.main_photo.thumbnail.url }}" alt="" style="height: 350px">
                     <div class="info">
                         <div class="title">{{ home.name }}<br>
                             <span class="place">Private room - {{ home.beds }} beds</span><br>
@@ -20,7 +20,9 @@
                     </div>
                 </a>
             </div>
-
         </div>
     {% endfor %}
 </div>
+{#    {% for home in homes %}#}
+{#      <div class="infinite-item">{{ home }}</div>#}
+{#    {% endfor %}#}

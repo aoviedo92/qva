@@ -589,7 +589,10 @@ div.container-fluid div.single-home-book input {
     height: 20px;
 }
 
-div.homes-filter div.home-wrapper img {
+div#homes-list div.row.infinite-item div.home {
+    margin-bottom: 20px;!important;
+}
+div#homes-list div.container div.col-md-6 div.home img {
     height: 350px;
 }
 

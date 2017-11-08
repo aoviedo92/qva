@@ -9,7 +9,8 @@ from lodging.models import Home, Hotel, Amenity
 class HomeAdmin(TranslationAdmin):
     list_display = ['name', 'description', 'importance', 'destination']
     prepopulated_fields = {'slug': ['name']}
-    exclude = ['main_photo', 'photos']
+    exclude = ['main_photo', 'photos', 'position']
+    filter_horizontal = ('amenities', )
 
     def save_model(self, request, obj, form, change):
         # super().save_model(request, obj, form, change)
