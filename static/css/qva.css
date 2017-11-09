@@ -67,7 +67,7 @@ ul.top-menu li.top-menu-login {
 }
 
 .qva-top-menu-input-search {
-    margin-top: -10px;
+    margin-top: 15px;
     width: 300px;
     padding-left: 30px;
     transition: all .5s ease-out;
@@ -89,6 +89,7 @@ ul.top-menu li.top-menu-login {
     float: left;
     margin-left: 5px;
     color: #ccc;
+    left: 25px;
 }
 
 select.qva-top-menu-select-lang {
@@ -97,12 +98,12 @@ select.qva-top-menu-select-lang {
     z-index: 10;
     /*    appearance: none;*/
     /*    -webkit-appearance: none;*/
-    /*    -moz-appearance: none;*/
+    -moz-appearance: none;
     cursor: pointer;
 }
 
 select.qva-top-menu-select-lang option {
-    padding: 15px;
+    /*padding: 15px;*/
     background: #f5f4f4;
     cursor: pointer;
     color: #333;
