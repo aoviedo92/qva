@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from meta.views import Meta
 
 from lodging.models import Home
+from seo.mixins import ModelMetaView
 
 
 def apply_filters(get_params):
@@ -41,7 +42,7 @@ def home_list(request):
     return render(request, 'homes/home-list.html', context)
 
 
-class HomeDetail(DetailView):
+class HomeDetail(ModelMetaView, DetailView):
     model = Home
     context_object_name = 'home'
     template_name = 'homes/home-detail.html'

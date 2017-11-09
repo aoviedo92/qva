@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from geoposition.fields import GeopositionField
+from meta.models import ModelMeta
 from model_utils import Choices
 from model_utils.models import TimeStampedModel
 
@@ -27,7 +28,7 @@ class Amenity(models.Model):
         return self.amenity
 
 
-class Lodging(TimeStampedModel):
+class Lodging(ModelMeta, TimeStampedModel):
     """ modelo abstracto que se refiere a un hospedaje en general. """
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
