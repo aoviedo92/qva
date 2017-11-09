@@ -39,7 +39,8 @@ INSTALLED_APPS = [
 THIRD_PARTY_APPS = [
     # 'rosetta',
     'geoposition',
-    'meta'
+    'meta',
+    'djmoney_rates'
 ]
 QVA_APPS = [
     'destination.apps.DestinationConfig',
@@ -124,3 +125,11 @@ GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCqWBl3aHat1kkmXPHRJnn_-Jw3DVkOq7o'
 # django-meta
 META_INCLUDE_KEYWORDS = ['qvandares', 'cuba', 'havana', 'travel', 'hotels']
 META_DEFAULT_KEYWORDS = META_INCLUDE_KEYWORDS
+
+# djmoney-rates
+DJANGO_MONEY_RATES = {
+    'DEFAULT_BACKEND': 'djmoney_rates.backends.OpenExchangeBackend',
+    'OPENEXCHANGE_URL': 'http://openexchangerates.org/api/latest.json',
+    'OPENEXCHANGE_APP_ID': '3f96d926a73e49e8923e3e9a3daff938',
+    'OPENEXCHANGE_BASE_CURRENCY': 'USD',
+}
