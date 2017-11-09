@@ -6,7 +6,7 @@ from seo.translation import SeoTranslationOptions
 
 @register(Lodging)
 class LodgingTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'description')
 
 
 @register(Home)
