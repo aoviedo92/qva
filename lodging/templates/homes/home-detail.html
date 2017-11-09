@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{#{% block title %}{{ title }} {% endblock %}#}
+{% block inside_header %}
+    {# sobreescribir el bloque para quitar este contenido, o usar el espacio para captar atencion #}
+{% endblock %}
+{% block content %}
+    <!--  titulo  -->
+    <div class="container">
+        <div class="about">
+            <div class="container">
+                <h3>{{ home.name }}</h3>
+                <p class="home-price">from ${{ home.price }} per night</p>
+            </div>
+            <div class="container-fluid">
+                <div class="row main-book-form single-home-book">
+                    <div class="col-md-6">
+                        <label for="input-datepicker">Check-in and Check-out</label>
+                        <input type="text" class="input-datepicker" id="booking-datepicker"
+                               placeholder="Check-in and Check-out">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="cant-adults">Adults</label>
+                        <input type="text" id="cant-adults" placeholder="Adults">
+                        <div><i class="ti-plus up-down-people"></i><i class="ti-minus up-down-people"></i></div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="cant-children">Children 0-12</label>
+                        <input type="text" id="cant-children" placeholder="Children 0-12">
+                        <div><i class="ti-plus up-down-people"></i><i class="ti-minus up-down-people"></i></div>
+                    </div>
+                    <div class="col-md-2 book-btn">
+                        <div class="download">
+                            <a href="#"><i class="book-pricing">$244</i>
+                                <br> Book now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--  //titulo  -->
+    <!--  gallery & book form  -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="gallery">
+                    <img alt="{{ home.name }} - main photo" src="{{ home.main_photo.thumbnail.url }}"
+                         data-image="{{ home.main_photo.original.url }}">
+                    {% for photo in home.photos.all %}
+                        <img alt="{{ home.name }} - photos" src="{{ photo.thumbnail.url }}"
+                             data-image="{{ photo.original.url }}">
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis commodi eius consequatur
+                    dolores dolor, doloremque, nesciunt quos eaque magni. Ad fuga animi quae ducimus, a omnis saepe
+                    tenetur repellat cupiditate!</p>
+                <h3>Amenities</h3>
+                <div class="amenities">
+                    <div class="item-amenity">
+                        <span>Internet</span>
+                        <span>Breakfast</span>
+                        <span>Air conditioning</span>
+                    </div>
+                    <br>
+                    <span class="show-more-amenities" id="show-more-amenities"><i class="ti-plus"></i> more</span>
+                    <span class="show-more-amenities" id="show-less-amenities"><i class="ti-minus"></i> less</span>
+                    <div id="no-essential-amenities" class="item-amenity">
+                        <span>Dryer</span>
+                        <span>TV</span>
+                        <span>Elevator</span>
+                    </div>
+                </div>
+                <h3>Nearby places</h3>
+                <ul>
+                    <li>place one</li>
+                    <li>place two</li>
+                    <li>place three</li>
+                    <li>place four</li>
+                </ul>
+                <h3>Home's rules</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam aperiam harum ea unde vitae deserunt
+                    illo sapiente, iusto assumenda facere blanditiis fugiat cum facilis hic voluptates pariatur
+                    reprehenderit magni veniam.</p>
+            </div>
+        </div>
+    </div>
+    <!--  //gallery & book form  -->
+    <!--  similares places  -->
+    <div class="container">
+        <h2>SIMILARES PLACES</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="hotel-wrapper home-wrapper">
+                    <img src="images/homes/2e024630a090875f767807320627b3dab8af4260.jpg" alt="">
+                    <div class="info">
+                        <div class="title">Casa de jessica <br>
+                            <div class="stars">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                        </div>
+
+                        <span class="price">$24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="hotel-wrapper home-wrapper">
+                    <img src="images/homes/9ad74ebcc3d83e86bcc0098026ed5e9f_L.jpg" alt="">
+                    <div class="info">
+                        <div class="title">Casa de adrian <br>
+                            <div class="stars">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                        </div>
+                        <span class="price">$54</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="hotel-wrapper home-wrapper">
+                    <a href="#">
+                        <img src="images/homes/me4.jpg" alt="">
+                        <div class="info">
+                            <div class="title">Casa del cesped verde <br>
+                                <span class="place">Private room - 2 beds</span><br>
+                                <div class="stars">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+                            <span class="price">$74</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  //smilares places      -->
+    <!--clients-->
+    <div class="our-clients">
+        <div class="container">
+            <!-- banner-text Slider starts Here -->
+            <!--//End-slider-script -->
+            <div id="top" class="callbacks_container">
+                <ul class="rslides" id="slider3">
+                    <li>
+                        <h4>WHAT OUR CLIENTS ARE SAYING</h4>
+                        <p>“It was a pleasure to work with Imran. He is very dedicated and professional. He worked very
+                            hard to satisfy our requirements and the communication was great .”</p>
+                        <span>John Doe</span>
+                        <a href="#">www.yourwebsite.zt</a>
+                    </li>
+                    <li>
+                        <h4>OUR CLIENTS ARE SAYING WHAT</h4>
+                        <p>“It was a pleasure to work with Imran. He is very dedicated and professional. He worked very
+                            hard to satisfy our requirements and the communication was great .”</p>
+                        <span>Doe John</span>
+                        <a href="#">www.yourwebsite.zt</a>
+                    </li>
+                    <li>
+                        <h4>COMMENTS OF OUR CLIENTS</h4>
+                        <p>“It was a pleasure to work with Imran. He worked very hard to satisfy our requirements and
+                            the communication was great . He is very dedicated and professional. ”</p>
+                        <span>MR.John Doe</span>
+                        <a href="#">www.yourwebsite.zt</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--//clients-->
+
+    <!--contact-->
+    <div class="contact">
+        <div class="container" id="contact">
+            <h3>LET A COMMENT</h3>
+            <form>
+                <input type="text" placeholder="Name" required="">
+                <input type="email" placeholder="Email" required="">
+                <textarea type="text" required="" placeholder="Message..."></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!--//contact-->
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+            $('#booking-datepicker').datepicker({
+                language: 'en',
+                minDate: new Date(), // Now can select only dates, which goes after today
+                range: true,
+                multipleDatesSeparator: " - "
+            });
+            var $gallery = $("#gallery").unitegallery({
+                gallery_skin: "alexis",
+                gallery_play_interval: 5000,
+                gallery_width: "100%"
+            });
+            $gallery.play();
+            var $noEssentialAmenities = $("div#no-essential-amenities");
+            var showMoreAmenities = $("#show-more-amenities");
+            var showLessAmenities = $("#show-less-amenities");
+            showMoreAmenities.click(function () {
+                $noEssentialAmenities.css("visibility", "visible");
+                showLessAmenities.css("display", "block");
+                showMoreAmenities.css("display", "none");
+            });
+            showLessAmenities.click(function () {
+                $noEssentialAmenities.css("visibility", "hidden");
+                showLessAmenities.css("display", "none");
+                showMoreAmenities.css("display", "block");
+            })
+        })
+    </script>
+{% endblock %}

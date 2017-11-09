@@ -38,7 +38,8 @@ INSTALLED_APPS = [
 
 THIRD_PARTY_APPS = [
     # 'rosetta',
-    'geoposition'
+    'geoposition',
+    'meta'
 ]
 QVA_APPS = [
     'destination.apps.DestinationConfig',

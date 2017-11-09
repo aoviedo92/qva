@@ -27,7 +27,7 @@ class Amenity(models.Model):
         return self.amenity
 
 
-class Lodging(SeoTag, TimeStampedModel):
+class Lodging(TimeStampedModel):
     """ modelo abstracto que se refiere a un hospedaje en general. """
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
@@ -36,6 +36,10 @@ class Lodging(SeoTag, TimeStampedModel):
     destination = models.ForeignKey(Destination, null=True, blank=True)
     position = GeopositionField(null=True, blank=True)
     price = models.PositiveIntegerField()
+    _metadata = {
+        'title': 'name',
+        'description': 'description',
+    }
 
     class Meta:
         abstract = True

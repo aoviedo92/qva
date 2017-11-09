@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{{ title }} {% endblock %}
+{#{% block title %}{{ title }} {% endblock %}#}
 {% block inside_header %}
     {# sobreescribir el bloque para quitar este contenido, o usar el espacio para captar atencion #}
 {% endblock %}
 {% block content %}
-    <h1>{{ title }}</h1>
+    <h1>{{ meta.title }}</h1>
     <div class="main-book-form homes-filter container-fluid">
         <form method="get">
             <div class="container-fluid">

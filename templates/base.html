@@ -1,10 +1,13 @@
 {% load static %}
 {% load i18n %}
+{% load meta %}
 <!doctype html>
 <html lang="en">
 
-<head>
-    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} qvandares{% endblock %}</title>
+<head {% meta_namespaces %}>
+    {{ meta.og_description }}
+    {% include "meta/meta.html" %}
+{#    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} qvandares{% endblock %}</title>#}
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/qva.css' %}" type="text/css" rel="stylesheet" media="all">
     {% if DEBUG %}
@@ -15,8 +18,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="{{ meta_keywords }}">
-    <meta name="description" content="{{ meta_description }}">
+{#    <meta name="keywords" content="{{ meta_keywords }}">#}
+{#    <meta name="description" content="{{ meta_description }}">#}
 
     {% if DEBUG %}
         {% include 'includes/statics/js-dev.html' %}

@@ -1,8 +1,8 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.utils.translation import ugettext_lazy as _
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from meta.views import Meta
 
 from lodging.models import Home
 
@@ -34,9 +34,17 @@ def home_list(request):
         homes = paginator.page(paginator.num_pages)
     except PageNotAnInteger:
         homes = paginator.page(1)
-    context = {'homes': homes, 'title': _('Homes & Rooms in Cuba')}
+    context = {'homes': homes}
     context.update(seted_filters)
+    context.update({'meta': Meta(title='Homes & Rooms in Cuba', description='description Homes & Rooms in Cuba',
+                                 keywords=['cuba', 'travel', 'rooms'])})
     return render(request, 'homes/home-list.html', context)
+
+
+class HomeDetail(DetailView):
+    model = Home
+    context_object_name = 'home'
+    template_name = 'homes/home-detail.html'
 
 
 class HomeList(ListView):
