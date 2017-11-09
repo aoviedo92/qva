@@ -11,7 +11,7 @@ class LodgingTranslationOptions(TranslationOptions):
 
 @register(Home)
 class HomeTranslationOptions(LodgingTranslationOptions):
-    fields = ()
+    fields = ('house_rules',)
 
 
 @register(Hotel)
