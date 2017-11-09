@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.template.defaultfilters import truncatechars
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from geoposition.fields import GeopositionField
@@ -39,8 +40,11 @@ class Lodging(ModelMeta, TimeStampedModel):
     price = models.PositiveIntegerField()
     _metadata = {
         'title': 'name',
-        'description': 'description',
+        'description': 'meta_description',
     }
+
+    def meta_description(self):
+        return truncatechars(self.description, 150)
 
     class Meta:
         abstract = True

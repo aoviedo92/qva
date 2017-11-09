@@ -120,3 +120,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
 
 # geoposition
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCqWBl3aHat1kkmXPHRJnn_-Jw3DVkOq7o'
+
+# django-meta
+META_INCLUDE_KEYWORDS = ['qvandares', 'cuba', 'havana', 'travel', 'hotels']
+META_DEFAULT_KEYWORDS = META_INCLUDE_KEYWORDS
