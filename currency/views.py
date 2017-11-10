@@ -3,13 +3,12 @@ from django.conf import settings
 from django.utils.http import is_safe_url, urlunquote
 
 CURRENCY_QUERY_PARAMETER = 'currency'
-CURRENCY_SESSION_KEY = CURRENCY_QUERY_PARAMETER
 
 
 def set_currency(request):
     """
-    Redirect to a given url while setting the chosen language in the
-    session or cookie. The url and the language code need to be
+    Redirect to a given url while setting the chosen currency in the
+    session or cookie. The url and the currency code need to be
     specified in the request parameters.
 
     Since this view changes how the user will see the rest of the site, it must
@@ -28,11 +27,11 @@ def set_currency(request):
     response = http.HttpResponseRedirect(next) if next else http.HttpResponse(status=204)
     if request.method == 'POST':
         currency_code = request.POST.get(CURRENCY_QUERY_PARAMETER)
-        if currency_code and currency_code in ['USD', 'EUR']:
+        if currency_code and currency_code in settings.CURRENCIES:
             if next:
                 response = http.HttpResponseRedirect(next)
             if hasattr(request, 'session'):
-                request.session[CURRENCY_SESSION_KEY] = currency_code
+                request.session[settings.CURRENCY_SESSION_KEY] = currency_code
             else:
                 response.set_cookie(
                     'currency', currency_code,

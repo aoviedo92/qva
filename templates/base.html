@@ -1,12 +1,13 @@
 {% load static %}
 {% load i18n %}
 {% load meta %}
+{% load currency %}
 <!doctype html>
 <html lang="en">
 
 <head {% meta_namespaces %}>
     {% include "meta/meta.html" %}
-{#    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} qvandares{% endblock %}</title>#}
+    {#    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} qvandares{% endblock %}</title>#}
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="all">
     <link href="{% static 'css/qva.css' %}" type="text/css" rel="stylesheet" media="all">
     {% if DEBUG %}
@@ -17,8 +18,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-{#    <meta name="keywords" content="{{ meta_keywords }}">#}
-{#    <meta name="description" content="{{ meta_description }}">#}
+    {#    <meta name="keywords" content="{{ meta_keywords }}">#}
+    {#    <meta name="description" content="{{ meta_description }}">#}
 
     {% if DEBUG %}
         {% include 'includes/statics/js-dev.html' %}
@@ -55,13 +56,17 @@
                 </form>
 
             </li>
+
             <li class="top-menu-lang">
                 <form class="qva-top-nav-elem" action="{% url 'set_currency' %}" method="post" id="form-set-currency">
                     {% csrf_token %}
                     <input name="next" type="hidden" value="{{ request.path|slice:'3:' }}"/>
                     <select name="currency" class="qva-top-menu-input qva-top-menu-select-lang">
-                        <option value="USD" {% if 'USD' == CURRENCY_CODE %}selected="selected"{% endif %}>$ USD</option>
-                        <option value="EUR" {% if 'EUR' == CURRENCY_CODE %}selected="selected"{% endif %}>€ EUR</option>
+                        {% get_available_currencies as available_currencies %}
+                        {% get_current_currency as current_currency %}
+                        {% for currency in available_currencies %}
+                            <option value="{{ currency }}" {% if currency == current_currency %}selected="selected"{% endif %}>{{ currency }}</option>
+                        {% endfor %}
                     </select>
                 </form>
             </li>
@@ -102,30 +107,31 @@
     <!--//header-->
     {% block inside_header %}
         <div class="container">
-        <div class="banner-title">
-            <h5>GRAB YOUR ATTENTION</h5>
-            <h1><span>TRAVELERS </span> REPOSE AND DREAM AMONG MY <span> LEAVES</span></h1>
-            <div class="container-fluid">
-                <div class="row main-book-form">
-                    <div class="container-fluid"></div>
-                    <div class="col-md-4 col-xs-12 book-search">
-                        <input type="text" class="input-search" placeholder="{% trans 'Hotels, Places, Tours...' %}">
-                        <span class="ti-search book-lupa-icon"></span>
-                    </div>
-                    <div class="col-md-5 col-xs-12">
-                        <input type="text" class="input-datepicker" id="booking-datepicker"
-                               placeholder="{% trans 'Arrival and Departure' %}">
-                    </div>
-                    <div class="col-md-3 col-xs-12 book-btn">
-                        <div class="download">
-                            <a href="#">{% trans 'Start booking now' %}</a>
+            <div class="banner-title">
+                <h5>GRAB YOUR ATTENTION</h5>
+                <h1><span>TRAVELERS </span> REPOSE AND DREAM AMONG MY <span> LEAVES</span></h1>
+                <div class="container-fluid">
+                    <div class="row main-book-form">
+                        <div class="container-fluid"></div>
+                        <div class="col-md-4 col-xs-12 book-search">
+                            <input type="text" class="input-search"
+                                   placeholder="{% trans 'Hotels, Places, Tours...' %}">
+                            <span class="ti-search book-lupa-icon"></span>
+                        </div>
+                        <div class="col-md-5 col-xs-12">
+                            <input type="text" class="input-datepicker" id="booking-datepicker"
+                                   placeholder="{% trans 'Arrival and Departure' %}">
+                        </div>
+                        <div class="col-md-3 col-xs-12 book-btn">
+                            <div class="download">
+                                <a href="#">{% trans 'Start booking now' %}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
     {% endblock inside_header %}
 </div>
 <!--//banner-->

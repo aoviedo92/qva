@@ -77,7 +77,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'qvandares.context_processors.debug',
-                'currency.context_processors.get_currency'
             ],
         },
     },
@@ -135,3 +134,7 @@ DJANGO_MONEY_RATES = {
     'OPENEXCHANGE_APP_ID': '3f96d926a73e49e8923e3e9a3daff938',
     'OPENEXCHANGE_BASE_CURRENCY': 'USD',
 }
+# currency
+CURRENCIES = ['USD', 'EUR', 'CUP', 'CUC']
+DEFAULT_CURRENCY = 'USD'
+CURRENCY_SESSION_KEY = 'currency'
