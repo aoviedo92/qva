@@ -36,7 +36,7 @@ class Lodging(ModelMeta, TimeStampedModel):
     description = models.TextField()
     amenities = models.ManyToManyField(Amenity)
     destination = models.ForeignKey(Destination, null=True, blank=True)
-    position = GeopositionField(null=True, blank=True)
+    position = GeopositionField(null=True, blank=True, default='23.1135925,-82.36659559999998')#23.1135925,-82.36659559999998
     price = models.PositiveIntegerField()
     _metadata = {
         'title': 'name',
