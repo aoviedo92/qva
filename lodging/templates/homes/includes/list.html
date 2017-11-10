@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load currency %}
 <div class="row infinite-item">
     {% for home in homes %}
         <div class="col-md-6 col-lg-4">
@@ -16,7 +17,7 @@
                                 <i class="ti-star"></i>
                             </div>
                         </div>
-                        <span class="price">${{ home.price }}</span>
+                        <span class="price">{{ home.price|set_currency:request }}</span>
                     </div>
                 </a>
             </div>
