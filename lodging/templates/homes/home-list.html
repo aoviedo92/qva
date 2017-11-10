@@ -32,8 +32,8 @@
                 </div>
                 <div class="col-md-2 book-btn">
                     <div class="download">
-                        {#                <a href="#">Start searching</a>#}
-                        <input type="submit" value="Start searching">
+                        {#  todo estilizar este submit, si no se deja como link y se coge el evento con jq #}
+                        <input type="submit" value="{% trans 'Start searching' %}">
                     </div>
                 </div>
             </div>
@@ -44,9 +44,10 @@
         <div id="homes-list" class="infinite-container">
             {% include 'homes/includes/list.html' %}
         </div>
-        {% if page_obj.has_next %}
-            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
+        {% if homes.has_next %}
+            <a class="infinite-more-link" href="?page={{ homes.next_page_number }}">More</a>
         {% endif %}
+{#  todo comprobar y estilizar este loading  #}
         <div class="loading" style="display: none;">
             Loading...
         </div>
