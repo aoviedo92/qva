@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^currency/', include('currency.urls')),
     url(r'^rosetta/', include('rosetta.urls')),
 ]
 if settings.DEBUG:

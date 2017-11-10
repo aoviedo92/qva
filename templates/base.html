@@ -53,20 +53,15 @@
                         {% endfor %}
                     </select>
                 </form>
-                {#            <div class="lang">#}
-                {#                <span class="flag-icon flag-icon-es" style="font-size: 24px"></span>#}
-                {#                <span class="flag-icon flag-icon-it"></span>#}
-                {#                <span class="flag-icon flag-icon-en"></span>#}
-                {#                <span class="flag-icon flag-icon-de"></span>#}
-                {#                <span class="flag-icon flag-icon-fr"></span>#}
-                {#            </div>#}
 
             </li>
             <li class="top-menu-lang">
-                <form class="qva-top-nav-elem">
-                    <select class="qva-top-menu-input qva-top-menu-select-lang">
-                        <option>$ USD</option>
-                        <option>€ EUR</option>
+                <form class="qva-top-nav-elem" action="{% url 'set_currency' %}" method="post" id="form-set-currency">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path|slice:'3:' }}"/>
+                    <select name="currency" class="qva-top-menu-input qva-top-menu-select-lang">
+                        <option value="USD" {% if 'USD' == CURRENCY_CODE %}selected="selected"{% endif %}>$ USD</option>
+                        <option value="EUR" {% if 'EUR' == CURRENCY_CODE %}selected="selected"{% endif %}>€ EUR</option>
                     </select>
                 </form>
             </li>
@@ -196,9 +191,14 @@
 <script>
     $(document).ready(function () {
         var $formSetLang = $('form#form-set-lang');
+        var $formSetCurrency = $('form#form-set-currency');
         var $selectLang = $formSetLang.find('select#select-lang');
+        var $selectCurrency = $formSetCurrency.find('select[name="currency"]');
         $selectLang.change(function () {
             $formSetLang.submit();
+        });
+        $selectCurrency.change(function () {
+            $formSetCurrency.submit();
         });
         //script-for-menu -->
         $("span.menu").click(function () {

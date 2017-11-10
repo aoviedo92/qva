@@ -47,6 +47,7 @@ QVA_APPS = [
     'images.apps.ImagesConfig',
     'lodging.apps.LodgingConfig',
     'index.apps.IndexConfig',
+    'currency'
 ]
 INSTALLED_APPS += THIRD_PARTY_APPS + QVA_APPS
 
@@ -75,7 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'qvandares.context_processors.debug'
+                'qvandares.context_processors.debug',
+                'currency.context_processors.get_currency'
             ],
         },
     },

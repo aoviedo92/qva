@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load currency %}
 {#{% block title %}{{ title }} {% endblock %}#}
 {% block inside_header %}
     {# sobreescribir el bloque para quitar este contenido, o usar el espacio para captar atencion #}
@@ -11,7 +12,7 @@
         <div class="about">
             <div class="container">
                 <h3>{{ home.name }}</h3>
-                <p class="home-price">from ${{ home.price }} per night</p>
+                <p class="home-price">from {{ home.price|set_currency:request }} per night</p>
             </div>
             <div class="container-fluid">
                 <div class="row main-book-form single-home-book">
