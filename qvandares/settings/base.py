@@ -47,7 +47,8 @@ QVA_APPS = [
     'images.apps.ImagesConfig',
     'lodging.apps.LodgingConfig',
     'index.apps.IndexConfig',
-    'currency'
+    'currency',
+    'accounts.apps.AccountsConfig',
 ]
 INSTALLED_APPS += THIRD_PARTY_APPS + QVA_APPS
 
