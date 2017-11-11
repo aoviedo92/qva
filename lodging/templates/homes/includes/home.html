@@ -1,0 +1,18 @@
+{% load currency %}
+<div class="home hotel-wrapper home-wrapper">
+    <a href="{{ home.get_absolute_url }}">
+        <img src="{{ home.main_photo.thumbnail.url }}" alt="" style="height: {{ height }}">
+        <div class="info">
+            <div class="title">{{ home.name }}<br>
+                <span class="place">Private room - {{ home.beds }} beds</span><br>
+                <div class="stars">
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                    <i class="ti-star"></i>
+                </div>
+            </div>
+            <span class="price">{{ home.price|set_currency:request }}</span>
+        </div>
+    </a>
+</div>

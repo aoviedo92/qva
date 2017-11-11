@@ -28,13 +28,13 @@ class Amenity(models.Model):
     def __str__(self):
         return self.amenity
 
-    # @staticmethod
-    # def secondaries():
-    #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.secondaries)
-    #
-    # @staticmethod
-    # def basics():
-    #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.basic)
+        # @staticmethod
+        # def secondaries():
+        #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.secondaries)
+        #
+        # @staticmethod
+        # def basics():
+        #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.basic)
 
 
 class Lodging(ModelMeta, TimeStampedModel):
@@ -97,3 +97,10 @@ class Home(Lodging):
 
     def get_absolute_url(self):
         return reverse('lodging:home_detail', kwargs={'slug': self.slug})
+
+    def similares(self):
+        return Home.objects.exclude(id=self.id).filter(
+            type=self.type,
+            destination=self.destination,
+            beds__gte=self.beds - 1, beds__lte=self.beds + 1,  # una cama mas, una cama menos
+        )

@@ -93,56 +93,11 @@
     <div class="container">
         <h2>{% trans 'SIMILARES PLACES' %}</h2>
         <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <div class="hotel-wrapper home-wrapper">
-                    <img src="images/homes/2e024630a090875f767807320627b3dab8af4260.jpg" alt="">
-                    <div class="info">
-                        <div class="title">Casa de jessica <br>
-                            <div class="stars">
-                                <i class="ti-star"></i>
-                                <i class="ti-star"></i>
-                            </div>
-                        </div>
-
-                        <span class="price">$24</span>
-                    </div>
-                </div>
+            {% for similar in home.similares %}
+                <div class="col-md-4 col-sm-4">
+                {% include 'homes/includes/home.html' with height="250px" %}
             </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="hotel-wrapper home-wrapper">
-                    <img src="images/homes/9ad74ebcc3d83e86bcc0098026ed5e9f_L.jpg" alt="">
-                    <div class="info">
-                        <div class="title">Casa de adrian <br>
-                            <div class="stars">
-                                <i class="ti-star"></i>
-                                <i class="ti-star"></i>
-                                <i class="ti-star"></i>
-                                <i class="ti-star"></i>
-                            </div>
-                        </div>
-                        <span class="price">$54</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="hotel-wrapper home-wrapper">
-                    <a href="#">
-                        <img src="images/homes/me4.jpg" alt="">
-                        <div class="info">
-                            <div class="title">Casa del cesped verde <br>
-                                <span class="place">Private room - 2 beds</span><br>
-                                <div class="stars">
-                                    <i class="ti-star"></i>
-                                    <i class="ti-star"></i>
-                                    <i class="ti-star"></i>
-                                    <i class="ti-star"></i>
-                                </div>
-                            </div>
-                            <span class="price">$74</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <!--  //smilares places      -->
