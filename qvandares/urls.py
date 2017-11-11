@@ -30,5 +30,6 @@ if settings.DEBUG:
 urlpatterns += i18n_patterns(
     url(r'^admin/', admin.site.urls),
     url(r'^lodging/', include('lodging.urls', namespace='lodging', app_name='lodging')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts', app_name='accounts')),
     url(r'^', include('index.urls', namespace='index', app_name='index')),
 )

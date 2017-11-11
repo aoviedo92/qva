@@ -40,7 +40,8 @@ THIRD_PARTY_APPS = [
     # 'rosetta',
     'geoposition',
     'meta',
-    'djmoney_rates'
+    'djmoney_rates',
+    'widget_tweaks'
 ]
 QVA_APPS = [
     'destination.apps.DestinationConfig',
@@ -139,3 +140,6 @@ DJANGO_MONEY_RATES = {
 CURRENCIES = ['USD', 'EUR', 'CUP', 'CUC']
 DEFAULT_CURRENCY = 'USD'
 CURRENCY_SESSION_KEY = 'currency'
+
+# accounts
+

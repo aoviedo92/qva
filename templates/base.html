@@ -32,8 +32,12 @@
     <div class="qva-top-nav-content">
         <ul class="top-menu">
             <li class="top-menu-login">
+                {% if user.is_authenticated %}
+                    <a class="qva-top-nav-elem qva-link">{{ user.first_name|capfirst }}</a>
+                {% else %}
                 <a class="qva-top-nav-elem qva-link">sign up</a>
                 <a class="qva-top-nav-elem login">sign in</a>
+                {% endif %}
             </li>
             <li class="top-menu-lang">
                 <form action="{% url 'set_language' %}" method="post" class="qva-top-nav-elem"
