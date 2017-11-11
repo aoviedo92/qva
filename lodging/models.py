@@ -28,6 +28,14 @@ class Amenity(models.Model):
     def __str__(self):
         return self.amenity
 
+    # @staticmethod
+    # def secondaries():
+    #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.secondaries)
+    #
+    # @staticmethod
+    # def basics():
+    #     return Amenity.objects.filter(type=Amenity.TYPE_CHOICES.basic)
+
 
 class Lodging(ModelMeta, TimeStampedModel):
     """ modelo abstracto que se refiere a un hospedaje en general. """
@@ -36,7 +44,8 @@ class Lodging(ModelMeta, TimeStampedModel):
     description = models.TextField()
     amenities = models.ManyToManyField(Amenity)
     destination = models.ForeignKey(Destination, null=True, blank=True)
-    position = GeopositionField(null=True, blank=True, default='23.1135925,-82.36659559999998')#23.1135925,-82.36659559999998
+    position = GeopositionField(null=True, blank=True,
+                                default='23.1135925,-82.36659559999998')  # 23.1135925,-82.36659559999998
     price = models.PositiveIntegerField()
     _metadata = {
         'title': 'name',

@@ -12,14 +12,14 @@
         <div class="about">
             <div class="container">
                 <h3>{{ home.name }}</h3>
-                <p class="home-price">from {{ home.price|set_currency:request }} per night</p>
+                <p class="home-price">{% trans 'from' %} {{ home.price|set_currency:request }} {% trans 'per night' %}</p>
             </div>
             <div class="container-fluid">
                 <div class="row main-book-form single-home-book">
                     <div class="col-md-6">
-                        <label for="input-datepicker">Check-in and Check-out</label>
+                        <label for="input-datepicker">{% trans 'Check-in and Check-out' %}</label>
                         <input type="text" class="input-datepicker" id="booking-datepicker"
-                               placeholder="Check-in and Check-out">
+                               placeholder="{% trans 'Check-in and Check-out' %}">
                     </div>
                     <div class="col-md-2">
                         <label for="cant-adults">Adults</label>
@@ -34,7 +34,7 @@
                     <div class="col-md-2 book-btn">
                         <div class="download">
                             <a href="#"><i class="book-pricing">$244</i>
-                                <br> Book now</a>
+                                <br> {% trans 'Book now' %}</a>
                         </div>
                     </div>
                 </div>
@@ -58,24 +58,22 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h3>Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis commodi eius consequatur
-                    dolores dolor, doloremque, nesciunt quos eaque magni. Ad fuga animi quae ducimus, a omnis saepe
-                    tenetur repellat cupiditate!</p>
-                <h3>Amenities</h3>
+                <h3>{% trans 'Description' %}</h3>
+                <p>{{ home.description }}</p>
+                <h3>{% trans 'Amenities' %}</h3>
                 <div class="amenities">
                     <div class="item-amenity">
-                        <span>Internet</span>
-                        <span>Breakfast</span>
-                        <span>Air conditioning</span>
+                        {% for amenity in basic_amenities %}
+                            <span>{{ amenity }}</span>
+                        {% endfor %}
                     </div>
                     <br>
                     <span class="show-more-amenities" id="show-more-amenities"><i class="ti-plus"></i> more</span>
                     <span class="show-more-amenities" id="show-less-amenities"><i class="ti-minus"></i> less</span>
                     <div id="no-essential-amenities" class="item-amenity">
-                        <span>Dryer</span>
-                        <span>TV</span>
-                        <span>Elevator</span>
+                        {% for amenity in secondary_amenities %}
+                            <span>{{ amenity }}</span>
+                        {% endfor %}
                     </div>
                 </div>
                 <h3>Nearby places</h3>
@@ -85,17 +83,15 @@
                     <li>place three</li>
                     <li>place four</li>
                 </ul>
-                <h3>Home's rules</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam aperiam harum ea unde vitae deserunt
-                    illo sapiente, iusto assumenda facere blanditiis fugiat cum facilis hic voluptates pariatur
-                    reprehenderit magni veniam.</p>
+                <h3>{% trans "Home's rules" %}</h3>
+                <p>{{ home.house_rules }}</p>
             </div>
         </div>
     </div>
     <!--  //gallery & book form  -->
     <!--  similares places  -->
     <div class="container">
-        <h2>SIMILARES PLACES</h2>
+        <h2>{% trans 'SIMILARES PLACES' %}</h2>
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <div class="hotel-wrapper home-wrapper">

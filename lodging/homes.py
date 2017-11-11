@@ -20,13 +20,13 @@ def apply_filters(get_params):
         filters.update({'price__gte': min_price})
     if max_price:
         filters.update({'price__lte': max_price})
-    seted_filters = {'cant_adults': cant_adults, 'min_price': min_price, 'max_price': max_price}
+    settled_filters = {'cant_adults': cant_adults, 'min_price': min_price, 'max_price': max_price}
     qs = Home.objects.filter(**filters)
-    return qs, seted_filters
+    return qs, settled_filters
 
 
 def home_list(request):
-    homes, seted_filters = apply_filters(request.GET)
+    homes, settled_filters = apply_filters(request.GET)
     paginator = Paginator(homes, 6)
     page = request.GET.get('page', 1)
     try:
@@ -36,7 +36,9 @@ def home_list(request):
     except PageNotAnInteger:
         homes = paginator.page(1)
     context = {'homes': homes}
-    context.update(seted_filters)
+    context.update(settled_filters)
+    # TODO: buscar el metodo en django-meta que me permite establecer title como <title></title>
+    # TODO: i18n
     context.update({'meta': Meta(title='Homes & Rooms in Cuba', description='description Homes & Rooms in Cuba',
                                  keywords=['cuba', 'travel', 'rooms'])})
     return render(request, 'homes/home-list.html', context)
@@ -46,6 +48,13 @@ class HomeDetail(ModelMetaView, DetailView):
     model = Home
     context_object_name = 'home'
     template_name = 'homes/home-detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # TODO: mejorar esto (se pone .filter dos veces, debe haber una mejor manera)
+        context['basic_amenities'] = self.object.amenities.filter(type='basic')
+        context['secondary_amenities'] = self.object.amenities.filter(type='secondary')
+        return context
 
 
 class HomeList(ListView):
