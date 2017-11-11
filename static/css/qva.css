@@ -187,11 +187,10 @@ div.hotel-wrapper div.info span.price {
 
 div.hotel-wrapper img {
     transition: all .5s ease-out;
-
 }
 
 div.hotel-wrapper img:hover {
-    box-shadow: 0 0 15px 2px #555;
+    box-shadow: 0 0 10px 2px #8CC63F;
 }
 
 div.info {
