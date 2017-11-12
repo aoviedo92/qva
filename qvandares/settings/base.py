@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 from decouple import config
+from django.urls.base import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -142,4 +143,14 @@ DEFAULT_CURRENCY = 'USD'
 CURRENCY_SESSION_KEY = 'currency'
 
 # accounts
+LOGOUT_REDIRECT_URL = reverse_lazy('index:home')
 
+# emailing
+# during development, you can configure Django to write e-mails to the
+# standard output instead of sending them through an SMTP server
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'my_account@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True

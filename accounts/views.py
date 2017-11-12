@@ -1,6 +1,12 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
+from django.shortcuts import render, redirect
+from django.views.generic.base import TemplateView
+
 from .forms import SignUpForm
+
+
+class ProfileView(TemplateView):
+    template_name = 'accounts/profile.html'
 
 
 def signup(request):
@@ -12,4 +18,4 @@ def signup(request):
             return redirect('index:home')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
