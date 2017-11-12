@@ -12,7 +12,7 @@
                     <i class="ti-star"></i>
                 </div>
             </div>
-            <span class="price">{{ home.price|set_currency:request }}</span>
+            <span class="price">{% set_currency request home.price %}</span>
         </div>
     </a>
 </div>

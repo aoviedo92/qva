@@ -5,6 +5,12 @@
 .right {
     float: right;
 }
+/*price*/
+span.price span.currency{
+    font-style: italic;
+    font-weight: 100;
+    font-size: .7em;
+}
 
 textarea:focus,
 input:focus,

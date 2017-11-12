@@ -21,3 +21,14 @@ def get_available_currencies():
 @register.simple_tag(takes_context=True)
 def get_current_currency(context):
     return context['request'].session.get(settings.CURRENCY_SESSION_KEY, settings.DEFAULT_CURRENCY)
+
+
+@register.inclusion_tag('includes/price.html')
+def set_currency(request, price):
+    """
+    usado para poder estilizar el precio y el currency. un template tag si puede devolver html, miestras q
+    es custom filter solo puede devolver str
+    """
+    currency_session = request.session.get(settings.CURRENCY_SESSION_KEY, settings.DEFAULT_CURRENCY)
+    money = convert_money(price, settings.DEFAULT_CURRENCY, currency_session)
+    return {'amount': '%d' % money.amount, 'currency': money.currency}
