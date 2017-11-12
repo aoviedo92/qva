@@ -37,9 +37,10 @@ def home_list(request):
         homes = paginator.page(1)
     context = {'homes': homes}
     context.update(settled_filters)
-    # TODO: buscar el metodo en django-meta que me permite establecer title como <title></title>
+    # TODO: add description, keywords
     # TODO: i18n
-    context.update({'meta': Meta(title='Homes & Rooms in Cuba', description='description Homes & Rooms in Cuba',
+    context.update({'meta': Meta(use_title_tag=True, title='Homes & Rooms in Cuba',
+                                 description='description Homes & Rooms in Cuba',
                                  keywords=['cuba', 'travel', 'rooms'])})
     return render(request, 'homes/home-list.html', context)
 
