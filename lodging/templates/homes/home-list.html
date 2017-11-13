@@ -44,8 +44,8 @@
         <div id="homes-list" class="infinite-container">
             {% include 'homes/includes/list.html' %}
         </div>
-        {% if homes.has_next %}
-            <a class="infinite-more-link" href="?page={{ homes.next_page_number }}">More</a>
+        {% if page_obj.has_next %}
+            <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}">More</a>
         {% endif %}
 {#  todo comprobar y estilizar este loading  #}
         <div class="loading" style="display: none;">
