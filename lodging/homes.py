@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from meta.views import Meta
 
+from index.mixins import MenuLinkMixin
 from lodging.models import Home
 from seo.mixins import ModelMetaView
 
@@ -20,13 +21,13 @@ def apply_filters(get_params):
         filters.update({'price__gte': min_price})
     if max_price:
         filters.update({'price__lte': max_price})
-    settled_filters = {'cant_adults': cant_adults, 'min_price': min_price, 'max_price': max_price}
+    chosen_filters = {'cant_adults': cant_adults, 'min_price': min_price, 'max_price': max_price}
     qs = Home.objects.filter(**filters)
-    return qs, settled_filters
+    return qs, chosen_filters
 
 
 def home_list(request):
-    homes, settled_filters = apply_filters(request.GET)
+    homes, chosen_filters = apply_filters(request.GET)
     paginator = Paginator(homes, 6)
     page = request.GET.get('page', 1)
     try:
@@ -35,8 +36,8 @@ def home_list(request):
         homes = paginator.page(paginator.num_pages)
     except PageNotAnInteger:
         homes = paginator.page(1)
-    context = {'homes': homes}
-    context.update(settled_filters)
+    context = {'homes': homes, MenuLinkMixin.use_context_var: 'homes'}
+    context.update(chosen_filters)
     # TODO: add description, keywords
     # TODO: i18n
     context.update({'meta': Meta(use_title_tag=True, title='Homes & Rooms in Cuba',

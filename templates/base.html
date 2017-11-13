@@ -94,9 +94,9 @@
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul class="nav1">
-                    <li><a href="{% url 'index:home' %}" class="active scroll">{% trans 'HOME' %}</a></li>
+                    <li><a href="{% url 'index:home' %}" class="scroll {% if menu_link_active == 'home' %}active{% endif %}">{% trans 'HOME' %}</a></li>
                     <li><a href="#about" class="scroll">{% trans 'HOTELS' %}</a></li>
-                    <li><a href="{% url 'lodging:home_list' %}" class="scroll">{% trans 'HOMES' %}</a></li>
+                    <li><a href="{% url 'lodging:home_list' %}" class="scroll {% if menu_link_active == 'homes' %}active{% endif %}">{% trans 'HOMES' %}</a></li>
                     <li><a href="#team" class="scroll">{% trans 'CUBANIA' %}</a></li>
                     <li><a href="#blog" class="scroll">{% trans 'TOURS' %}</a></li>
                     <li><a href="#contact" class="scroll">{% trans 'ABOUT US' %}</a></li>
