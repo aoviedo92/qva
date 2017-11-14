@@ -22,6 +22,7 @@ class Photo(models.Model):
     def make_thumbnail(self, image, photo_saved_name):
         thumb_saved_name = 'thumb-' + photo_saved_name
         thumb = Img.open(image)
+        # hacer veresiones 100x100 y 200x200
         thumb.thumbnail((300, 300), Img.ANTIALIAS)
         b_thumb = BytesIO()
         thumb.save(b_thumb, 'JPEG', quality=QUALITY_THUMB)
