@@ -86,6 +86,7 @@ class Home(Lodging):
     photos = models.ManyToManyField(Photo, related_name='home_photos')
     host = models.OneToOneField(User, null=True, blank=True)
     type = models.CharField(choices=ROOM_TYPE, default=ROOM_TYPE.entire_room, max_length=20)
+    rating = models.PositiveIntegerField(default=4, blank=True, null=True)
 
     class Meta:
         verbose_name = _('Home')
@@ -104,3 +105,10 @@ class Home(Lodging):
             destination=self.destination,
             beds__gte=self.beds - 1, beds__lte=self.beds + 1,  # una cama mas, una cama menos
         )
+
+    def rating_stars(self):
+        """
+        rating es un numero, para poder poner la cant de estrellas hacemos una lista con la cant de elem igual
+        a rating, luego en la plantilla podemos poner una estrella font-icon para cada iteracion
+        """
+        return range(self.rating)

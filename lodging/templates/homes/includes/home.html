@@ -6,10 +6,9 @@
             <div class="title">{{ home.name }}<br>
                 <span class="place">Private room - {{ home.beds }} beds</span><br>
                 <div class="stars">
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
-                    <i class="ti-star"></i>
+                    {% for foo in home.rating_stars %}
+                        <i class="ti-star"></i>
+                    {% endfor %}
                 </div>
             </div>
             <span class="price">{% set_currency request home.price %}</span>
