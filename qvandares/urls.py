@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^currency/', include('currency.urls')),
     url(r'^rosetta/', include('rosetta.urls')),
+    url('^api/v1/', include('social_django.urls', namespace='social')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

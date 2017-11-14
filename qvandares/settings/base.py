@@ -42,7 +42,8 @@ THIRD_PARTY_APPS = [
     'geoposition',
     'meta',
     'djmoney_rates',
-    'widget_tweaks'
+    'widget_tweaks',
+    'social_django',
 ]
 QVA_APPS = [
     'destination.apps.DestinationConfig',
@@ -80,6 +81,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'qvandares.context_processors.debug',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect'
             ],
         },
     },
@@ -154,6 +157,15 @@ CURRENCY_SESSION_KEY = 'currency'
 
 # accounts
 LOGOUT_REDIRECT_URL = reverse_lazy('index:home')
+
+# django social auth
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '734954425066-7ucsqu811o3kpul05hd175h5jf7voj87.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H_qfXGjrNrFbh7xtbH1vVlei'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # emailing
 # during development, you can configure Django to write e-mails to the
