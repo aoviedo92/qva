@@ -17,7 +17,7 @@
     {% endif %}
     <div class="login-form">
         <form method="post">
-            {% render_field form.username placeholder="email" %}
+            {% render_field form.username placeholder="username or email" %}
             {% render_field form.password placeholder="password" %}
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}"/>
@@ -28,6 +28,7 @@
     <div class="social">
         <ul>
             <a href="{% url 'social:begin' 'google-oauth2' %}">Google+</a>
+            <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
 {#            <li class="facebook"><a href="{% url "social:begin" "facebook"%}">Sign in with Facebook</a></li>#}
 {#            <li class="twitter"><a href="{% url "social:begin" "twitter"%}">Login with Twitter</a></li>#}
 {#            <li class="google"><a href="{% url "social:begin" "google" %}">Loginwith Google</a></li>#}

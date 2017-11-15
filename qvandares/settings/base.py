@@ -161,9 +161,13 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index:home')
 # django social auth
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '734954425066-7ucsqu811o3kpul05hd175h5jf7voj87.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'H_qfXGjrNrFbh7xtbH1vVlei'
+SOCIAL_AUTH_FACEBOOK_KEY = '288193311698797'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'dc52916e312b7880ce7cce2a3fbfdb57'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'accounts.backends.ModelEmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
